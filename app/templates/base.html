@@ -5,13 +5,17 @@
     <title>{{ title }} - Microblog</title>
     {% else %}
     <title>Microblog</title>
-    
+
     {% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div>Microblog: <a href="/index">Home</a></div>
-    <hr>
-    {% block content %}{% endblock %}
+    <div class="header">
+        Microblog:
+        <a href="/index">Home</a>
+        <a href="/button">Button!</a>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}  
 </body>
 </html>
