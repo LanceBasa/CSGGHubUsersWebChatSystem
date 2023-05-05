@@ -16,6 +16,20 @@ def chat():
 def profile():
     return render_template('profile.html')
 
+@app.route('/registerLogin/', methods=["GET","POST"])
+def registerLogin():
+    if request.method == 'POST':
+        if 'login' in request.form:
+            return render_template('profile.html')
+
+        elif 'register' in request.form:
+            return render_template('chatbox.html')
+
+            
+    return render_template('registerLogin.html')
+    
+
+
 
 
 if __name__ =='__main__':

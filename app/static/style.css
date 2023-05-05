@@ -1,0 +1,9 @@
+body{
+    background: url("loginbg.jpg") fixed;
+    background-size: cover;
+}
+
+.divoutline{
+    border: solid 1px black;
+    background-color: beige;
+}

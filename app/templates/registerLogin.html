@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-5 divoutline ">
+                <h1>Existing User</h1>
+                <h2>login</h2>
+                <form  method="post">
+                    <label for="userName">Username <em>(required)</em>: </label>
+                    <input type="text" name="userName" id="userName" required/>
+                    <br>
+            
+                    <label for="password">Password <em>(required)</em>:</label>
+                    <input type="password" name="password" id="password" required />
+                    <br>
+            
+                    <input type="submit" name="login">
+                </form>
+            </div>
+            <div class="col-5 divoutline offset-2">
+                <h1>New User</h1>
+                <h2>Create an account</h2>
+                <form  method="post">
+                    <label for="userName">Username <em>(required)</em>: </label>
+                    <input type="text" name="userName" id="userName" required/>
+                    <br>
+
+                    <label for="email">Email <em>(required)</em>: </label>
+                    <input type="text" name="email" id="email" required/>
+                    <br>
+
+                    <label for="password">Password <em>(required)</em>:</label>
+                    <input type="password" name="password" id="password" required />
+                    <br>
+
+                    <label for="confirmPassword">Confirm Password <em>(required)</em>:</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required />
+                    <br>
+            
+                    <input type="submit" name="register">
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+{% endblock %}
