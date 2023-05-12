@@ -1,4 +1,74 @@
+/* for nav colours #0859D1   legal style size 45, white *2 shadow medium*/
 div.header {
     background-color: palegreen;
     padding: 5px;
     }
+
+.navigation {
+    margin-top: 50px;
+    margin-left: 70px;
+    
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: rgb(17, 13, 56);
+}
+.logo{
+    width: 50%;
+}
+.navicons{
+    height: 50px;
+}
+
+.welcomeBlurb {
+    background-color:rgba(255, 255, 255, 0.5);
+    display:block;
+    text-align: center;
+    width: 80%;
+    margin: 100px auto;
+    height: auto;
+    border-radius: 80px;
+    padding: 20px 0px;
+}
+.welcomeTitle {
+    display:block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.pos {
+    position: absolute;
+    top: 20px;
+    right: 0;
+  }
+
+  .welcomeText{
+    font-size: 20px;
+  }
+
+
+  .homeInfo{
+    /* border: solid 1px yellow;     */
+    display:block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    height: auto;
+    border-radius: 80px;
+    margin-top: 300px;
+
+  }
+
+  .infoRow{
+    margin: 30px 0px;
+  }
+  .infoBox{
+    background-color: rgba(255, 255, 255, 0.5);
+    height: auto;
+    border-radius: 20px;
+    margin: 10px;
+  }

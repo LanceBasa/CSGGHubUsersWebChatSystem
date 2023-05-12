@@ -13,10 +13,17 @@ from app import db
 from app.forms import RegistrationForm
 
 @app.route('/')
-@app.route('/index')
+def homePage():
+    return render_template("homePage.html", title='Welcome to CSGGHub')
+
+@app.route('/chat')
+def chat():
+    return render_template("chat.html", title='Chatroom - CSGGHub')
+
+@app.route('/profile')
 #making sure a user is logged in to access the index page '@login_required'
 @login_required 
-def index():
+def profile():
     user = {'username': 'Miguel'}
     posts = [
     {
@@ -28,7 +35,7 @@ def index():
     'body': 'The Avengers movie was so cool!'
     }
     ]
-    return render_template("index.html", title='Home Page', posts=posts)
+    return render_template("profile.html", title='My Profile', posts=posts)
 @app.route('/button')
 def button():
     return render_template("button.html", title="Button!")
@@ -37,7 +44,7 @@ def button():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('profile'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -47,14 +54,14 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('profile')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('homePage'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
