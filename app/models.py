@@ -72,6 +72,7 @@ class FavWeapon(db.Model):
 class Weapon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     weapon_name = db.Column(db.String(64), unique=True)
+    category = db.Column(db.String(64))
     users = db.relationship('FavWeapon', backref='weapon', lazy='dynamic')
 
     def __repr__(self):
