@@ -28,6 +28,17 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+
+class ChatRoom(db.Model):
+    __tablename__ = 'chatroom'
+    id = db.Column(db.Integer, primary_key=True)
+    room_name = db.Column(db.String(64), unique=True)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+    chat = db.relationship('Chat', backref='room', lazy='dynamic')
+
+    def __repr__(self):
+        return '<ChatRoom {}>'.format(self.room_name)
 
 
 class Chat(db.Model):
@@ -40,14 +51,7 @@ class Chat(db.Model):
     def __repr__(self):
         return '<Chat {}>'.format(self.text)
 
-class ChatRoom(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    room_name = db.Column(db.String(64), unique=True)
-    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
-    chat = db.relationship('Chat', backref='room', lazy='dynamic')
 
-    def __repr__(self):
-        return '<ChatRoom {}>'.format(self.room_name)
 
 class RoomUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
