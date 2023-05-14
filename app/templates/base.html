@@ -31,20 +31,20 @@
                             <a class="col-6"  href="{{ url_for('homePage') }}"><img  src="../static/WelcomeNav.png" alt="Welcome"></span></a>
                         </li> -->
                         <li >
-                            <a class="col-6"  href="{{ url_for('login') }}"><img class="navicons" src="../static/LoginNav.png" alt="Login"></a>
+                            <a class="col-6 "  href="{{ url_for('login') }}"><img class="navicons" src="../static/LoginNav.png" alt="Login"></a>
                         </li>
                         <li>
                             <a class="col-6" href="{{ url_for('register') }}"><img class="navicons" src="../static/RegisterNav.png" alt="Register"></a>
                         </li>
                         {% else %}
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ url_for('profile') }}"><img class="navicons" src="../static/ProfileNav.png" alt="My Profile"></span></a>
+                        <li>
+                            <a class="col-6" href="{{ url_for('profile') }}"><img class="navicons" src="../static/ProfileNav.png" alt="My Profile"></span></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ url_for('chat') }}"><img class="navicons" src="../static/ChatNav.png" alt="Chat"></a>
+                        <li>
+                            <a class="col-6" href="{{ url_for('chat') }}"><img class="navicons" src="../static/ChatNav.png" alt="Chat"></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ url_for('logout') }}"><img class="navicons" src="../static/LogoutNav.png" alt="Logout"></a>
+                        <li>
+                            <a class="col-6" href="{{ url_for('logout') }}"><img class="navicons" src="../static/LogoutNav.png" alt="Logout"></a>
                         </li>
                         {% endif %}
 
