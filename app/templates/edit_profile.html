@@ -12,10 +12,11 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.about_me.label }}<br>
-            {{ form.about_me(cols=50, rows=4) }}<br>
-            {% for error in form.about_me.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <label for="fav_maps">Favorite Maps:</label><br>
+            {% for map_id, map_name in form.fav_maps.choices %}
+            <input type="checkbox" id="fav_map_{{ map_id }}" name="fav_maps" value="{{ map_id }}"
+                {% if map_id in form.fav_maps.data %}checked{% endif %}>
+            <label for="fav_map_{{ map_id }}">{{ map_name }}</label><br>
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>

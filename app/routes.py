@@ -4,6 +4,8 @@ from app.forms import LoginForm, EditProfileForm
 from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User
 from datetime import datetime
+from app.models import Map, FavMap
+
 
 #libraries to redirect a non-logged in user back to the login page when they tries
 #to access the protected index page
@@ -83,17 +85,38 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
+
+
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
     form = EditProfileForm()
+    form.fav_maps.choices = [(map.id, map.map_name) for map in Map.query.order_by(Map.map_name)]
+
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+
+        fav_map_ids = request.form.getlist('fav_maps')
+
+        # Clear all favorite maps
+        for fav_map in current_user.fav_maps.all():
+            current_user.fav_maps.remove(fav_map)
+
+        # Add the selected maps
+        for map_id in fav_map_ids:
+            map = Map.query.get(map_id)
+            if map:
+                fav_map = FavMap(user=current_user, map=map)
+                db.session.add(fav_map)
+
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('edit_profile'))
+
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.fav_maps.data = [fav_map.map_id for fav_map in current_user.fav_maps]
+
     return render_template('edit_profile.html', title='Edit Profile', form=form)
