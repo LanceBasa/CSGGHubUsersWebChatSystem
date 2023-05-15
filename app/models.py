@@ -20,6 +20,8 @@ class User(UserMixin, db.Model):
     created_rooms = db.relationship('ChatRoom', backref='creator', lazy='dynamic')
     fav_weapons = db.relationship('FavWeapon', backref='user', lazy='dynamic')
     fav_maps = db.relationship('FavMap', backref='user', lazy='dynamic')
+    about_me = db.Column(db.String(300))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
