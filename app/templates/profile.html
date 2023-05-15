@@ -6,4 +6,11 @@
     {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
+    <table>
+        <tr valign="top">
+            <td><img src="{{ current_user.avatar(128) }}"></td>
+            <td><h1>User: {{ current_user.username }}</h1></td>
+        </tr>
+    </table>
+    <hr>
 {% endblock %}
