@@ -22,24 +22,30 @@ def homePage():
 def chat():
     return render_template("chat.html", title='Chatroom - CSGGHub')
 
-@app.route('/profile')
+@app.route('/profile/<username>')
 #making sure a user is logged in to access the index page '@login_required'
 @login_required 
-def profile():
-    user = {'username': 'Miguel'}
-    posts = [
-    {
-    'author': {'username': 'John'},
-    'body': 'Beautiful day in Portland!'
-    },
-    {
-    'author': {'username': 'Susan'},
-    'body': 'The Avengers movie was so cool!'
-    }
-    ]
-    fav_weapons = FavWeapon.query.filter_by(user_id=current_user.id).all()
-    return render_template("profile.html", title='My Profile', posts=posts)
+def profile(username):
+    user=User.query.filter_by(username=current_user.username).first_or_404()
+
+    # if the viewer is another person
+    if (current_user.username !=username):
+        anotherUser=User.query.filter_by(username=username).first_or_404()
+        #check if its private if it is, return to the logged in profile
+        # if not view the user profile
+        if anotherUser.private:
+            flash('This user profile is privete. Viewing your profile')
+
+        else:
+            return render_template("profile.html", title='My Profile', user=anotherUser)
+
+
+    return render_template("profile.html", title='My Profile', user=user)
+
+
 @app.route('/button')
+
+
 def button():
     return render_template("button.html", title="Button!")
 
@@ -47,7 +53,7 @@ def button():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', username=current_user.username))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -57,7 +63,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('profile')
+            next_page = url_for('profile', username=current_user.username)
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
@@ -95,10 +101,11 @@ def edit_profile():
     form.fav_maps.choices = [(map.id, map.map_name) for map in Map.query.order_by(Map.map_name)]
     # Add weapon choices
     form.fav_weapons.choices = [(weapon.id, weapon.weapon_name) for weapon in Weapon.query.order_by(Weapon.weapon_name)]
-
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+
+        current_user.private= form.isPrivate.data
 
         fav_map_ids = request.form.getlist('fav_maps')
         fav_weapon_ids = request.form.getlist('fav_weapons')
@@ -126,7 +133,7 @@ def edit_profile():
 
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', username=current_user.username))
 
     elif request.method == 'GET':
         form.username.data = current_user.username

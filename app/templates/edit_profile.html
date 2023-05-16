@@ -12,6 +12,21 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.about_me.label }}<br>
+            {{ form.about_me(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.isPrivate.label }}<br>
+            {{ form.isPrivate() }}<br>
+            {% for error in form.isPrivate.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </p>
+
+        <p>
             <label for="fav_maps">Favorite Maps:</label><br>
             {% for map_id, map_name in form.fav_maps.choices %}
             <input type="checkbox" id="fav_map_{{ map_id }}" name="fav_maps" value="{{ map_id }}"

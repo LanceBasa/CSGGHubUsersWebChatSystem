@@ -33,4 +33,6 @@ class EditProfileForm(FlaskForm):
     about_me = TextAreaField('About me', validators=[Length(min=0, max=300)])
     fav_maps = SelectMultipleField('Favorite Maps', coerce=int, widget=widgets.ListWidget(prefix_label=False), option_widget=widgets.CheckboxInput())
     fav_weapons = SelectMultipleField('Favorite Weapons', coerce=int, widget=widgets.ListWidget(prefix_label=False), option_widget=widgets.CheckboxInput())
+    isPrivate = BooleanField('Keep Account Private?')
+
     submit = SubmitField('Submit')

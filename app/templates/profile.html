@@ -1,40 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <span style="color: red" class="alert">{{ message }}</span>
+    {% endfor %}
+{% endif %}
+{% endwith %}
     <table>
         <tr valign="top">
-            <td><img src="{{ current_user.avatar(128) }}"></td>
+            <td><img src="{{ user.avatar(128) }}"></td>
             <td>
-                <h1>User: {{ current_user.username }}</h1>
-                {% if current_user.about_me %}
-                    <p>{{ current_user.about_me }}</p>
+                <h1>User: {{ user.username }}</h1>
+                <h2>About me</h2>
+                {% if user.about_me %}
+                    <p>{{ user.about_me }}</p>
                 {% endif %}
-                {% if current_user.last_seen %}
-                    <p>Last seen on: {{ current_user.last_seen }}</p>
+                {% if user.last_seen %}
+                    <p>Last seen on: {{ user.last_seen }}</p>
                 {% endif %}
-                
-                {% if current_user.fav_maps %}
+                <div class="temp">
+                    {% if user.fav_maps %}
                     <h2>Favorite Maps:</h2>
                     <ul>
-                        {% for fav_map in current_user.fav_maps %}
+                        {% for fav_map in user.fav_maps %}
                             <li>{{ fav_map.map.map_name }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
+                </div>
 
-                {% if current_user.fav_weapons %}
+                <div class="temp">
+                    {% if user.fav_weapons %}
                     <h2>Favorite Weapons:</h2>
                     <ul>
-                        {% for fav_weapon in current_user.fav_weapons %}
+                        {% for fav_weapon in user.fav_weapons %}
                             <li>{{ fav_weapon.weapon.weapon_name }}</li>
                         {% endfor %}
                     </ul>
-                {% endif %}
+                    {% endif %}
+                </div>
+
             </td>
         </tr>
     </table>
 
-    {% if current_user == current_user %}
+    {% if current_user == user %}
         <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
     {% endif %}
     <hr>
