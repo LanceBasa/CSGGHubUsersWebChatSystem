@@ -21,6 +21,15 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
+
+                {% if current_user.fav_weapons %}
+                    <h2>Favorite Weapons:</h2>
+                    <ul>
+                        {% for fav_weapon in current_user.fav_weapons %}
+                            <li>{{ fav_weapon.weapon.weapon_name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </td>
         </tr>
     </table>

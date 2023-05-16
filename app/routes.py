@@ -37,6 +37,7 @@ def profile():
     'body': 'The Avengers movie was so cool!'
     }
     ]
+    fav_weapons = FavWeapon.query.filter_by(user_id=current_user.id).all()
     return render_template("profile.html", title='My Profile', posts=posts)
 @app.route('/button')
 def button():
@@ -92,16 +93,22 @@ def before_request():
 def edit_profile():
     form = EditProfileForm()
     form.fav_maps.choices = [(map.id, map.map_name) for map in Map.query.order_by(Map.map_name)]
+    # Add weapon choices
+    form.fav_weapons.choices = [(weapon.id, weapon.weapon_name) for weapon in Weapon.query.order_by(Weapon.weapon_name)]
 
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
 
         fav_map_ids = request.form.getlist('fav_maps')
+        fav_weapon_ids = request.form.getlist('fav_weapons')
 
         # Clear all favorite maps
         for fav_map in current_user.fav_maps.all():
             current_user.fav_maps.remove(fav_map)
+
+        # Clear all favorite weapons
+        FavWeapon.query.filter_by(user_id=current_user.id).delete()
 
         # Add the selected maps
         for map_id in fav_map_ids:
@@ -110,13 +117,21 @@ def edit_profile():
                 fav_map = FavMap(user=current_user, map=map)
                 db.session.add(fav_map)
 
+        # Add the selected weapons
+        for weapon_id in fav_weapon_ids:
+            weapon = Weapon.query.get(weapon_id)
+            if weapon:
+                fav_weapon = FavWeapon(user_id=current_user.id, weapon_id=weapon_id)
+                db.session.add(fav_weapon)
+
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('edit_profile'))
+        return redirect(url_for('profile'))
 
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
         form.fav_maps.data = [fav_map.map_id for fav_map in current_user.fav_maps]
+        form.fav_weapons.data = [fav_weapon.weapon_id for fav_weapon in FavWeapon.query.filter_by(user_id=current_user.id)]
 
     return render_template('edit_profile.html', title='Edit Profile', form=form)

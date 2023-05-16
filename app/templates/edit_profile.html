@@ -19,6 +19,14 @@
             <label for="fav_map_{{ map_id }}">{{ map_name }}</label><br>
             {% endfor %}
         </p>
+        <p>
+            <label for="fav_weapons">Favorite Weapons:</label><br>
+            {% for weapon_id, weapon_name in form.fav_weapons.choices %}
+            <input type="checkbox" id="fav_weapon_{{ weapon_id }}" name="fav_weapons" value="{{ weapon_id }}"
+                {% if weapon_id in form.fav_weapons.data %}checked{% endif %}>
+            <label for="fav_weapon_{{ weapon_id }}">{{ weapon_name }}</label><br>
+            {% endfor %}
+        </p>
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
