@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, Blueprint
 from app import app
 from app.forms import LoginForm, EditProfileForm
 from flask_login import logout_user, current_user, login_user, login_required
@@ -14,11 +14,12 @@ from werkzeug.urls import url_parse
 from app import db
 from app.forms import RegistrationForm
 
+
 @app.route('/')
 def homePage():
     return render_template("homePage.html", title='Welcome to CSGGHub')
 
-@app.route('/chat')
+@app.route('/chat') 
 def chat():
     return render_template("chat.html", title='Chatroom - CSGGHub')
 
