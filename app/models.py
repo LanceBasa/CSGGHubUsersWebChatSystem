@@ -98,6 +98,7 @@ class FavMap(db.Model):
 class Map(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     map_name = db.Column(db.String(64), unique=True)
+    map_about = db.Column(db.String(500))
     users = db.relationship('FavMap', backref='map', lazy='dynamic')
 
     def __repr__(self):

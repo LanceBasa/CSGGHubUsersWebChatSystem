@@ -4,7 +4,7 @@ from app.forms import LoginForm, EditProfileForm
 from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User
 from datetime import datetime
-from app.models import Map, FavMap
+from app.models import User,Map, FavMap, Weapon, FavWeapon
 
 
 #libraries to redirect a non-logged in user back to the login page when they tries
