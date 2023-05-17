@@ -17,7 +17,7 @@
         <ul>
             {% for room in user_rooms %}
             <li>
-                <a href="{{ url_for('main.chat_room', room_id=room.id) }}">{{ room.room_name }}</a>
+                <a href="{{ url_for('chat_room', room_id=room.id) }}">{{ room.room_name }}</a>
             </li>
             {% endfor %}
         </ul>
