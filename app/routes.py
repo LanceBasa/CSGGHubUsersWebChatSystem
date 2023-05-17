@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, abort
+from flask import render_template, flash, redirect, url_for, abort, request
 from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User, ChatRoom, Chat,RoomUser
 from app import socketio, app, db
@@ -26,7 +26,7 @@ def profile(username):
             flash('This user profile is private. Viewing your profile')
         else:
             return render_template("profile.html", title='My Profile', user=anotherUser)
-    return render_template("profile.html", title='My Profile', user=user)
+    return render_template("profile.html", title='My Profile', user=room_user)
 
 @app.route('/button')
 def button():
