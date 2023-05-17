@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ room.room_name }}</h2>
+
+    <div class="chatBox" id="chat">
+        <ul id="chatMessages">
+            {% for message in last_messages|reverse %}
+                <li>{{ message.text }}</li>
+            {% endfor %}
+        </ul>
+
+        <form id="messageForm">
+            <input type="hidden" id="room_id" value="{{ room_id }}">
+            <input type="text" id="message" placeholder="Enter a message">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="../static/script.js"></script>
+{% endblock %}

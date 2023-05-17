@@ -1,23 +1,41 @@
-const socket =io.connect('http://localhost:5000');//maybe??
+const socket = io(ENDPOINT, {
+  transports: ['websocket'],
+  withCredentials: true,
+});
 
+socket.on('connect', function () {
+  let room_id = document.getElementById("room_id").value;
+  socket.emit('joined', { room: room_id });
+});
 
-socket.on('connect',function(){
-    socket.emit("user_join", 'Brother');
-})
+document.getElementById("messageForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+  let message = document.getElementById("message").value;
+  let room_id = document.getElementById("room_id").value;
+  console.log(`Emitting message: ${message} to room: ${room_id}`); // Debugging line
+  socket.emit('text', { msg: message, room: room_id });
+  document.getElementById("message").value = "";
+});
 
-document.getElementById("message").addEventListener("keyup", function(event){
-    if (event.key=="Enter"){
-        let message = document.getElementById("message").value;
-        socket.emit("new_message",message);
-        document.getElementById("message").value="";
-    }
-})
+socket.on('message', function (data) {
+  let ul = document.getElementById("chatMessages");
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(data.msg));
+  ul.appendChild(li);
+  ul.scrollTop = ul.scrollHeight;
+});
 
-socket.on("chat", function(data){
-    console.log(data["message"]);
-    let ul = document.getElementById("chatMessages");
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode(data["message"]));
-    ul.appendChild(li);
-    ul.scrolltop = ul.scrollHeight;
-})
+socket.on('status', function (data) {
+  let ul = document.getElementById("chatMessages");
+  let li = document.createElement("li");
+  li.className = "status";
+  li.appendChild(document.createTextNode(data.msg));
+  ul.appendChild(li);
+  ul.scrollTop = ul.scrollHeight;
+});
+
+// When the user leaves the page
+window.addEventListener('beforeunload', function () {
+  let room_id = document.getElementById("room_id").value;
+  socket.emit('left', { room: room_id });
+});

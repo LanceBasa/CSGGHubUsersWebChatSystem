@@ -2,24 +2,26 @@
 
 {% block styling %}
 <style>
-    body{
+    body {
         background: url('/static/ChatBg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        }
+    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-
 {% endblock %}
 
 {% block content %}
-    <div class="chatBox" id="chat">
-        <ul id="chatMessages">
+    {% if user_rooms %}
+        <h2>Your Rooms</h2>
+        <ul>
+            {% for room in user_rooms %}
+            <li>
+                <a href="{{ url_for('main.chat_room', room_id=room.id) }}">{{ room.room_name }}</a>
+            </li>
+            {% endfor %}
         </ul>
-
-        <input type="text" id="message" placeholder="Enter a message">
-    </div>
-
-
-    <script src="../static/script.js"></script>
+    {% else %}
+        <h2>No Rooms Found</h2>
+    {% endif %}
 {% endblock %}

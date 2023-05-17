@@ -37,13 +37,13 @@ class User(UserMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
     
-
 class ChatRoom(db.Model):
     __tablename__ = 'chatroom'
     id = db.Column(db.Integer, primary_key=True)
     room_name = db.Column(db.String(64), unique=True)
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
     chat = db.relationship('Chat', backref='room', lazy='dynamic')
+    room_users = db.relationship('RoomUser', backref='chatroom', lazy='dynamic')
 
     def __repr__(self):
         return '<ChatRoom {}>'.format(self.room_name)
@@ -60,11 +60,10 @@ class Chat(db.Model):
         return '<Chat {}>'.format(self.text)
 
 
-
 class RoomUser(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('chatroom.id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    __tablename__ = 'room_user'
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    room_id = db.Column(db.Integer, db.ForeignKey('chatroom.id'), primary_key=True)
 
     def __repr__(self):
         return '<RoomUser {}>'.format(self.id)

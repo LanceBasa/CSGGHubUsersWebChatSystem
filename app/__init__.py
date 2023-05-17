@@ -5,17 +5,15 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_socketio import SocketIO
 
-
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
-socketio = SocketIO(app, debug=True)
+socketio = SocketIO(app, cors_allowed_origins='*')
 
-
+from app import routes, sockets  # Import the routes and sockets modules
 
 if __name__ == '__main__':
     socketio.run(app)
-from app import routes, models
