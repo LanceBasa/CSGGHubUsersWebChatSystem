@@ -12,6 +12,5 @@ def handle_user_join(username):
 
 @socketio.on("new_message")
 def handle_new_message(message):
-        print(f"New message: {message}")
-        emit("chat", {"message":message}, broadcast=True)
-        console.log('works')
+    print(f"New message: {message}")
+    emit("chat", {"message":message}, broadcast=True)
