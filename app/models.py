@@ -52,7 +52,7 @@ class ChatRoom(db.Model):
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(500))
-    created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, index=True, default=lambda: datetime.utcnow()) 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     room_id = db.Column(db.Integer, db.ForeignKey('chatroom.id'))
 
