@@ -111,3 +111,64 @@ body {
   border-radius: 50px;
   margin-top: 40px;
 }
+
+.profileBox{
+  height: auto;
+  margin: auto;
+  padding: 0 100px;
+  padding-top: 100px;
+}
+
+.profileImage{
+  border: solid 1px black;
+  width: 100%;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.profileInfo{
+  border: solid 1px black;
+  background-color: rgba(245, 245, 245,0.8);
+  border-radius: 20px;
+  padding: 20px;
+  font: 1em arial,sans-serif;
+}
+
+.profileBox>div{
+  text-align: center;
+}
+
+.playerFavs{
+  margin: auto;
+  padding: 0;
+
+  text-align: center;
+}
+
+.gunsAndMaps{
+  background-color: rgba(245, 245, 245,0.8);
+  border: solid 1px black;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 20px;
+
+}
+
+.horizontal-line {
+  margin: 50px auto;
+  width: 100%;
+}
+
+.test ul{
+  max-height: 200px;
+  overflow: auto;
+    text-align: center;
+  list-style: none;
+}
+
+
+.alertmsg{
+  font-style: bold;
+  color: red;
+  font-size: 20px;  
+}

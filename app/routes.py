@@ -19,6 +19,7 @@ def homePage():
     return render_template("homePage.html", title='Welcome to CSGGHub')
 
 @app.route('/chat')
+@login_required
 def chat():
     return render_template("chat.html", title='Chatroom - CSGGHub')
 
@@ -34,8 +35,8 @@ def profile(username):
         #check if its private if it is, return to the logged in profile
         # if not view the user profile
         if anotherUser.private:
-            flash('This user profile is privete. Viewing your profile')
-
+            flash(f"User '{username}' has set their profile to private. You have been redirected to your profile")
+            
         else:
             return render_template("profile.html", title='My Profile', user=anotherUser)
 
@@ -43,11 +44,8 @@ def profile(username):
     return render_template("profile.html", title='My Profile', user=user)
 
 
-@app.route('/button')
 
 
-def button():
-    return render_template("button.html", title="Button!")
 
 
 @app.route('/login', methods=['GET', 'POST'])
