@@ -10,10 +10,13 @@ document.getElementById("message").addEventListener("keyup", function(event){
         let message = document.getElementById("message").value;
         socket.emit("new_message",message);
         document.getElementById("message").value="";
+        alert("is working")
     }
 })
 
 socket.on("chat", function(data){
+    alert("is working2")
+
     console.log(data["message"]);
     let ul = document.getElementById("chatMessages");
     let li = document.createElement("li");

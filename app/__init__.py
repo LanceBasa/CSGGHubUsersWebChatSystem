@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
-socketio = SocketIO(app, debug=True)
+socketio = SocketIO(app, debug=True, async_mode='eventlet')
 
 
 
