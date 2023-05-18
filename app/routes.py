@@ -19,7 +19,7 @@ from app.forms import RegistrationForm
 def homePage():
     return render_template("homePage.html", title='Welcome to CSGGHub')
 
-@app.route('/chat') 
+@app.route('/chat', methods=['POST','GET']) 
 def chat():
     return render_template("chat.html", title='Chatroom - CSGGHub')
 

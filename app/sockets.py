@@ -1,16 +1,23 @@
-from flask_socketio import emit
+from flask_socketio import emit, join_room, leave_room
 from app import socketio
+import sys
+from flask import session
 
-@socketio.on('connect')
+@socketio.on('connect', namespace='/chat')
 def handle_connect():
-    print('Client connected!')
+    room=session.get("chat")
+    join_room(room)
+    print('Client connected!', file=sys.stderr)
+    # emit('status', 'msg here')
 
 
-@socketio.on("user_join")
+
+@socketio.on("user_join", namespace='/chat')
 def handle_user_join(username):
-    print(f'User {username} joined!')
+    print(f'User {username} joined!', file=sys.stderr)
 
-@socketio.on("new_message")
+@socketio.on("new_message", namespace='/chat')
 def handle_new_message(message):
-    print(f"New message: {message}")
-    emit("chat", {"message":message}, broadcast=True)
+    room=session.get("chat")
+    print(f"New message: {message}", file=sys.stderr)
+    emit("chat", {"message":message}, broadcast=True, room=room)
