@@ -5,6 +5,7 @@ from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User
 from datetime import datetime
 from app.models import User,Map, FavMap, Weapon, FavWeapon
+from flask_socketio import SocketIO, emit
 
 
 #libraries to redirect a non-logged in user back to the login page when they tries
@@ -13,7 +14,7 @@ from flask import request
 from werkzeug.urls import url_parse
 from app import db
 from app.forms import RegistrationForm
-socketio = SocketIO(app)
+
 
 
 @app.route('/')

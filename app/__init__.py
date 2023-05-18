@@ -16,6 +16,6 @@ app.config['SECRET_KEY'] = 'your_secret_key'  # Set a secret key for session enc
 socketio = SocketIO(app)
 
 
-if __name__ == '__main__':
-    socketio.run(app)
+#if __name__ == '__main__':
+#    socketio.run(app)
 from app import routes, models, sockets
