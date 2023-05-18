@@ -90,15 +90,15 @@ body {
     background-color: rgba(240, 248, 255,0.5);
     border: solid 1px red;
     margin: auto;
+    border-radius: 10px;
   }
 
   .chatBox {
     display:block;
     text-align: center;
     width: 100%;
-    margin: 40px auto;
+    margin: 20px auto;
     height: 600px;
-    padding: 30px;
     overflow-y: auto;
     max-height: 90%;
 }
@@ -181,12 +181,24 @@ body {
   list-style-type: none;
   text-align: left;
   padding: 0;
-  font-size: 20px;
-  font-weight: bold;
-  border: solid 1px red;
+  width: 100%;
 
 }
 
 #message{
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.userChat{
+  background-color: rgba(86, 87, 76, 0.5);
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 15px;
+  margin: 10px ;
+  padding: 0 20px;
+  word-wrap: break-word;
+  overflow: auto;
+  display: table;
+  max-width: 100%;
 }
