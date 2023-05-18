@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById("message").addEventListener("keyup", function(event){
         if (event.key=="Enter"){
-            alert("works");
             let message = document.getElementById("message").value;
             socket.emit("new_message",message);
             document.getElementById("message").value="";
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     socket.on("chat", function(data) {
-        alert("works 2")
 
         console.log(data["message"]);
         let ul = document.getElementById("chatMessages");
@@ -38,17 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   });
 
-  $(document).ready(function(){
-    var socket = io();
-    socket.on('my response', function(msg) {
-        $('#log').append('<p>Received: ' + msg.data + '</p>');
-    });
-    $('form#emit').submit(function(event) {
-        socket.emit('my event', {data: $('#emit_data').val()});
-        return false;
-    });
-    $('form#broadcast').submit(function(event) {
-        socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
-        return false;
-    });
-});
+//   $(document).ready(function(){
+//     var socket = io();
+//     socket.on('my response', function(msg) {
+//         $('#log').append('<p>Received: ' + msg.data + '</p>');
+//     });
+//     $('form#emit').submit(function(event) {
+//         socket.emit('my event', {data: $('#emit_data').val()});
+//         return false;
+//     });
+//     $('form#broadcast').submit(function(event) {
+//         socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
+//         return false;
+//     });
+// });

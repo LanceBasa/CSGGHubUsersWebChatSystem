@@ -86,17 +86,21 @@ body {
     margin: 20px 10px;
   }
 
-
+  .messages{
+    background-color: rgba(240, 248, 255,0.5);
+    border: solid 1px red;
+    margin: auto;
+  }
 
   .chatBox {
-    background-color:rgba(255, 255, 255, 0.5);
     display:block;
     text-align: center;
-    width: 40%;
+    width: 100%;
     margin: 40px auto;
     height: 600px;
-    border-radius: 80px;
-    padding: 0 40px;
+    padding: 30px;
+    overflow-y: auto;
+    max-height: 90%;
 }
 
 
@@ -171,4 +175,18 @@ body {
   font-style: bold;
   color: red;
   font-size: 20px;  
+}
+
+#chatMessages{
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+  border: solid 1px red;
+
+}
+
+#message{
+  width: 100%;
 }

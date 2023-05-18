@@ -4,8 +4,8 @@
 <style>
     body{
         background: url('/static/ChatBg.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+        
+        background-size: 100%;
         }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
@@ -18,12 +18,17 @@
 {% endblock %}
 
 {% block content %}
-    <div class="chatBox" id="chat">
-        <ul id="chatMessages">
-        </ul>
 
+    <div class="messages col-4">
+        <div class="chatBox" id="chat">
+            <ul id="chatMessages">
+            </ul>
+    
+        </div>
         <input type="text" id="message" placeholder="Enter a message">
+
     </div>
+
 
 
 
