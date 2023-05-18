@@ -170,6 +170,17 @@ body {
   list-style: none;
 }
 
+.edit_favs{
+  text-align: left;
+
+}
+.scroll_editpage{
+  
+  overflow-y: scroll;
+   max-height: 200px;
+}
+
+
 
 .alertmsg{
   font-style: bold;
