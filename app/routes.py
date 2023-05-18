@@ -1,10 +1,11 @@
-from flask import render_template, flash, redirect, url_for
-from app import app
+from flask import render_template, flash, redirect, url_for, Blueprint
+from app import app,SocketIO
 from app.forms import LoginForm, EditProfileForm
 from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User
 from datetime import datetime
 from app.models import User,Map, FavMap, Weapon, FavWeapon
+from flask_socketio import SocketIO, emit
 
 
 #libraries to redirect a non-logged in user back to the login page when they tries
@@ -14,11 +15,13 @@ from werkzeug.urls import url_parse
 from app import db
 from app.forms import RegistrationForm
 
+
+
 @app.route('/')
 def homePage():
     return render_template("homePage.html", title='Welcome to CSGGHub')
 
-@app.route('/chat')
+@app.route('/chat', methods=['POST','GET']) 
 @login_required
 def chat():
     return render_template("chat.html", title='Chatroom - CSGGHub')
