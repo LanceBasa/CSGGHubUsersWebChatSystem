@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     var currentForm = document.querySelector('form');
-    var currentFormId = currentForm.id;
+    if (currentForm!=null){
+        var currentFormId = currentForm.id;
+    }
 
     if(currentFormId=='loginForm'){
         loginValidation(currentFormId);
     }else if (currentFormId=='registerForm'){
         registerValidation(currentFormId);
-
     }
 })
 
