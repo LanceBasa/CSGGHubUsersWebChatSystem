@@ -14,7 +14,7 @@ Midhin Viju - 22850881
 
 ### Introduction
 
-This is a CITS3404 - Agile Web Development Project in Collaboration with Lance, Sahil and Midhin.
+This is a CITS3403 - Agile Web Development Project in Collaboration with Lance, Sahil and Midhin.
 
 The purpose of this project is to create a chat system that enables users to signup/register and login. The system will have a back-end database that will log all registered users and their chat history. Information about the game will be integrated in a chat bot system. Users can chat with other user to pair up and create a perfect team to dominate in CSGO!
 
