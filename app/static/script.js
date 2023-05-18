@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     document.getElementById("message").addEventListener("keyup", function(event){
-        if (event.key=="Enter"){
-            let message = document.getElementById("message").value;
+        let message = document.getElementById("message").value;
+        if (event.key=="Enter" && message != ''){
             socket.emit("new_message",message);
             document.getElementById("message").value="";
+
         }
     })
 
@@ -28,9 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(data["message"]);
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
+        li.classList.add("userChat");
+
         li.appendChild(document.createTextNode(data["message"]));
         ul.appendChild(li);
-        ul.scrolltop = ul.scrollHeight;
+        //ul.scrollTop = ul.scrollHeight;
+        ul.lastElementChild.scrollIntoView({ behavior: "smooth" }); // Scroll to the bottom
+
     })
 
 
