@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     socket.on('connect',function(){
         console.log("connected", socket.connected)
 
-        //socket.emit("user_join", 'Brother');
+        socket.emit("user_join", 'Brother');
     })
 
     document.getElementById("message").addEventListener("keyup", function(event){

@@ -12,10 +12,10 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+app.config['SECRET_KEY'] = 'your_secret_key'  # Set a secret key for session encryption
 socketio = SocketIO(app)
-
 
 
 if __name__ == '__main__':
     socketio.run(app)
-from app import routes, models
+from app import routes, models, sockets
