@@ -1,17 +1,11 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Document is ready!');
 
-    const socket =io.connect('http://' + document.domain + ':' + location.port + '/chat');//maybe??
-    //const socket =io.connect('')
-    //const socket =io.connect('')
+    const socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
     console.log('check1', socket.connected)
 
-
-
-    socket.on('connect',function(){
+    socket.on('connect', function(){
         console.log("connected", socket.connected)
-
         socket.emit('my event', {data:"Brother"});
     })
 
@@ -24,29 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     socket.on("chat", function(data) {
-
         console.log(data["message"]);
+        appendMessage(data["message"], data["username"]);
+    })
+    
+    socket.on("load_messages", function(messages) {
+        for(let message of messages) {
+            appendMessage(message.text, message.username);
+        }
+    })
+    
+
+    function appendMessage(message, username) {
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
-        li.appendChild(document.createTextNode(data["message"]));
+        let textNode = document.createTextNode(username + ": " + message);
+        li.appendChild(textNode);
         ul.appendChild(li);
-        ul.scrolltop = ul.scrollHeight;
-    })
-
-
-  });
-
-//   $(document).ready(function(){
-//     var socket = io();
-//     socket.on('my response', function(msg) {
-//         $('#log').append('<p>Received: ' + msg.data + '</p>');
-//     });
-//     $('form#emit').submit(function(event) {
-//         socket.emit('my event', {data: $('#emit_data').val()});
-//         return false;
-//     });
-//     $('form#broadcast').submit(function(event) {
-//         socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
-//         return false;
-//     });
-// });
+        ul.scrollTop = ul.scrollHeight;
+    }
+    
+});
