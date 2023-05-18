@@ -19,29 +19,46 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.isPrivate.label }}<br>
-            {{ form.isPrivate() }}<br>
-            {% for error in form.isPrivate.errors %}
-            <span style="color: red;">{{ error }}</span><br>
-            {% endfor %}
+            <div class="private">
+                <input type="checkbox" id="UserPrivate" name="isPrivate" value="true"
+                        {% if current_user.private %}checked{% endif %}>
+                <label for="UserPrivate">Private</label>
+            </div>
         </p>
+<div class="playerFavs col-10">
+    <div class="gunsAndMaps  col-3">
+        <h2 >Favorite Maps:</h2>
+        
+            <ul class="scroll_editpage">
+                {% for map_id, map_name in form.fav_maps.choices %}
+                    <li class="edit_favs">
+                        <input type="checkbox" id="fav_map_{{ map_id }}" name="fav_maps" value="{{ map_id }}"
+                            {% if map_id in form.fav_maps.data %}checked{% endif %}>
+                        <label for="fav_map_{{ map_id }}">{{ map_name }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+    </div>
 
-        <p>
-            <label for="fav_maps">Favorite Maps:</label><br>
-            {% for map_id, map_name in form.fav_maps.choices %}
-            <input type="checkbox" id="fav_map_{{ map_id }}" name="fav_maps" value="{{ map_id }}"
-                {% if map_id in form.fav_maps.data %}checked{% endif %}>
-            <label for="fav_map_{{ map_id }}">{{ map_name }}</label><br>
-            {% endfor %}
-        </p>
-        <p>
-            <label for="fav_weapons">Favorite Weapons:</label><br>
-            {% for weapon_id, weapon_name in form.fav_weapons.choices %}
-            <input type="checkbox" id="fav_weapon_{{ weapon_id }}" name="fav_weapons" value="{{ weapon_id }}"
-                {% if weapon_id in form.fav_weapons.data %}checked{% endif %}>
-            <label for="fav_weapon_{{ weapon_id }}">{{ weapon_name }}</label><br>
-            {% endfor %}
-        </p>
+    <div class="gunsAndMaps  col-3">
+        <h2 >Favorite Weapons:</h2>
+       
+            <ul class="scroll_editpage">
+                {% for weapon_id, weapon_name in form.fav_weapons.choices %}
+                    <li class="edit_favs">
+                        <input type="checkbox" id="fav_weapon_{{ weapon_id }}" name="fav_weapons" value="{{ weapon_id }}"
+                            {% if weapon_id in form.fav_weapons.data %}checked{% endif %}>
+                        <label for="fav_weapon_{{ weapon_id }}">{{ weapon_name }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        
+    </div>
+</div>
+
+
+        
+    
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
