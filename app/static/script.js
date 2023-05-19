@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key=="Enter" && message != ''){
             socket.emit("new_message",message);
             document.getElementById("message").value="";
-
         }
     })
 
@@ -22,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         appendMessage(data["message"], data["username"]);
     })
     
+
+
     socket.on("load_messages", function(messages) {
         for(let message of messages) {
             appendMessage(message.text, message.username);

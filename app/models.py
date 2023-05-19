@@ -93,7 +93,8 @@ class Rank(db.Model):
     
 class Commands(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    command_name = db.Column(db.String(64), unique=True)
+    command_name = db.Column(db.String(16), unique=True)
+    command_desc = db.Column(db.String(64))
     query_command = db.Column(db.String(64))
 
     def __repr__(self):
