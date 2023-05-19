@@ -8,9 +8,6 @@ from flask_login import current_user
 
 
 
-@socketio.on("user_join", namespace='/chat')
-def handle_user_join(username):
-    print(f'User {username} joined!', file=sys.stderr)
 
 @socketio.on("new_message", namespace='/chat')
 def handle_new_message(message):
@@ -34,7 +31,7 @@ def handle_new_message(message):
 
 
 @socketio.on('connect', namespace='/chat')
-def handle_connect():
+def handle_connect(data):
     # Retrieve the current room from the session
     room = session.get("chat")
     # Join the room
@@ -52,3 +49,20 @@ def handle_connect():
 
     # This assumes that you want to send a status message every time a client connects
     emit('status', {'msg': 'New client connected!'}, room=room)
+
+
+@socketio.on('join', namespace='/chat')
+def handle_user_join(data):
+    # Retrieve the current room from the session
+    # Join the room
+    room = session.get("chat")
+
+    # Join the room
+    join_room(room)
+    print('Client connected!', file=sys.stderr)
+
+    username = current_user.username  # Assuming you have the username of the current user
+    join_message = f"User '{username}' has joined the chat"
+    emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
+
+  

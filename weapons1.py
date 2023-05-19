@@ -15,4 +15,4 @@ def populate_weapons_from_csv(filename):
             db.session.add(weapon)
     db.session.commit()
 
-populate_weapons_from_csv('weapons1.csv')     
+populate_weapons_from_csv('weapons2.csv')     
