@@ -89,3 +89,12 @@ class Rank(db.Model):
 
     def __repr__(self):
         return '<Rank {}>'.format(self.rank_name)
+    
+    
+class Commands(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    command_name = db.Column(db.String(64), unique=True)
+    query_command = db.Column(db.String(64))
+
+    def __repr__(self):
+        return '<Commands {}>'.format(self.command_name)

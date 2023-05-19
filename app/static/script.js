@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Document is ready!');
 
     const socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
-    console.log('check1', socket.connected)
+    console.log('check if connected', socket.connected)
 
     socket.on('connect', function(){
         console.log("connected", socket.connected)
-        socket.emit('my event', {data:"Brother"});
+        socket.emit('join', {data:"username"});
     })
 
     document.getElementById("message").addEventListener("keyup", function(event){
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     socket.on("chat", function(data) {
-        console.log(data["message"]);
         appendMessage(data["message"], data["username"]);
     })
     
@@ -34,8 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
         li.classList.add("userChat");
+        let textNode=null;
+        if (username=='System'){
+            textNode = document.createTextNode(message);
+            li.style.color = "darkgreen"; // Set text color to red
 
-        let textNode = document.createTextNode(username + ": " + message);
+        }else {
+            textNode = document.createTextNode(username + ": " + message);
+        }
+
         li.appendChild(textNode);
         ul.appendChild(li);
         //ul.scrollTop = ul.scrollHeight;
@@ -43,5 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
-
   });
+
+  
+
+
