@@ -62,7 +62,7 @@ def handle_new_message(message):
         if message[0]=='~':
             print('it is ~')
             comm=message[1:]
-            comm=comm.split()
+            comm=comm.split(" ",1)
             item=""
             if(len(comm)>=2):
                 item=comm[1]
@@ -89,66 +89,94 @@ def handle_new_message(message):
 def get_user_fav_weapons(username):
     user = User.query.filter_by(username=username).first()
     if user:
-        fav_weapons = (
-            db.session.query(Weapon.weapon_name)
+        if user.private==True:
+            return username + " has set their profile to private"
+        user = (
+            Weapon.query(Weapon.weapon_name)
             .join(FavWeapon)
             .filter(FavWeapon.user_id == user.id)
             .all()
         )
-        user = [fav_weapon.weapon_name for fav_weapon in fav_weapons]
-        return " ".join(user)
+        user = sorted(set(fav_weapon.weapon_name for fav_weapon in user))
+        user = username+"'s favourite weapons:,"+", ".join(user)
+        return user
     return 'Username not found'
+
 
 def get_all_weapon_names():
     weapon_names = Weapon.query.all()
-    weapon_names=[weapon.weapon_name for weapon in weapon_names]
-    return " ".join(weapon_names)
+    weapon_names=sorted(set(weapon.weapon_name for weapon in weapon_names))
+    weapon_names = "Weapons List:,\n" + ", ".join(weapon_names)
+    return weapon_names
+
 
 
 def get_weapons_by_category(category):
     weapons = Weapon.query.filter_by(category=category).all()
     if not weapons:
         weapons = Weapon.query.all()
-        weapons = set(weapon.category for weapon in weapons)
-        return " Categories available"+ str(weapons)
-    weapons= [weapon.weapon_name for weapon in weapons]
-    return " ".join(weapons)
+        weapons = sorted(set(weapon.category for weapon in weapons))
+        weapons = "No such class option:," + ",".join(weapons)
+        return weapons
+    weapons= sorted(set(weapon.weapon_name for weapon in weapons))
+    weapons = category + " list:," + ", ".join(weapons)
+    return weapons
+
 
 
 def get_all_maps():
     maps = Map.query.all()
-    maps =[map.map_name for map in maps]
-    return ('\n'.join(maps))
+    maps =sorted(set(map.map_name for map in maps))
+    maps = "Maps List:," + ",".join(maps)
+    return maps
      
 
 def get_weapon_by_name(name):
     weapon = Weapon.query.filter_by(weapon_name=name).first()
     if weapon:
         text = weapon.description
+        text = text.replace(",", "")
         return text
-    return "No such weapon found"
+    return "No such weapon found. Please use command, ~weapList, to list all available weapons"
+
+
 
 def get_player_rank(name):
-    users = User.query.filter_by(username=name).first()
-    return users
+    user = User.query.filter_by(username=name).first()
+    if user:
+        if user.private==True:
+            return name + " has set their profile to private"
+        
+        user=(User.query(Rank.rank_name)
+            .join(Rank)
+            .filter(Rank.id == user.rank_id)
+            .all()
+        )
+        return user
+    return 'Username not found'
 
 def get_user_fav_maps(username):
     user = User.query.filter_by(username=username).first()
     if user:
+        if user.private == True:
+            return username + " has set their profile to private"
         fav_maps = (
-            FavMap.query
-            .join(Map)
-            .options(joinedload(FavMap.map))
+            Map.query
+            .join(FavMap)
             .filter_by(user_id=user.id)
+            .with_entities(Map.map_name)
             .all()
         )
-        return [fav_map.map.map_name for fav_map in fav_maps]
+        fav_maps = sorted(set(map.map_name for map in fav_maps))
+        user_fav_maps = username + "'s favourite maps:," + ",".join(fav_maps)
+        return user_fav_maps
     return 'Username not found'
+
 
 
 def get_all_commands():
     commands = Commands.query.all()
-    command_names = [command.command_name + command.command_desc for command in commands]
-    commands_str = "\" </br> \"".join(command_names)
-    return "Here are the available commands:" + commands_str
+    command_names = sorted(set(command.command_name + ":    " + command.command_desc for command in commands))
+    command_names = "Here are the commands available:,\n" + ", ".join(command_names)
+    return  command_names
 
