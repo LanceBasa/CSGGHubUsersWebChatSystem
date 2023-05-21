@@ -62,13 +62,16 @@ document.addEventListener('DOMContentLoaded', function() {
             textNode = document.createTextNode(message);
             li.style.color = "darkgreen";
         } else {
-            let timestamp = created_at ? " (" + created_at + ")" : "";  // Check if created_at value is defined
-            textNode = document.createTextNode(username + ": " + message + timestamp);
+            let dateOptions = { day: '2-digit', month: '2-digit', year: '2-digit' };
+            let timeOptions = { hour: '2-digit', minute: '2-digit' };
+            let localTimestamp = created_at ? new Date(created_at).toLocaleString('en-GB', { ...dateOptions, ...timeOptions }) : "";  
+            textNode = document.createTextNode(username + ": " + message + " (" + localTimestamp + ")");
         }
         li.appendChild(textNode);
         ul.appendChild(li);
         ul.lastElementChild.scrollIntoView({ behavior: "smooth" });
     }
+    
     
     
 });
