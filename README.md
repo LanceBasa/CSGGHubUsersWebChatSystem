@@ -25,7 +25,7 @@ The purpose of this project is to create a chat system that enables users to sig
 Please note, it is required to run this in linux terminal. Google Chrome (updated) is recommended to run this application. Other applications might cause some issues when running the application
 
 1. Unzip the file in your directory  
-2. Please install venv environment. This will require python and other packages. Click [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)for instructions on how to set-up venv environment (follow only up to installing flask).
+2. Please install venv environment. This will require python and other packages. Click [here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) for instructions on how to set-up venv environment (follow only up to installing flask).
 3. Make sure that you are in venv environment. Type the following in console to set up the environment for the app to run
 	> pip install -r requirements.txt
 4. You should be in a directory where the app directory is visible(not inside app direcory). To run the program, type the following code in your terminal. 
@@ -45,7 +45,10 @@ Press CTRL+C to quit
 
 #### Running selTest.py and 
 
-* Google chrome and firefox must be set up in venv to run tests
+* Google chrome(Google Chrome 113.0.5672.126) and firefox (Mozilla Firefox 113.0.1) must be set up in venv to run tests
+* Click [here](https://www.wikihow.com/Install-Google-Chrome-Using-Terminal-on-Linux#:~:text=Install%20the%20downloaded%20Chrome%20package,deb%20and%20press%20Enter) and follow instructions on how to install google chrome in venv
+* Install firefox by typing the following
+	> sudo apt install firefox
 * requirements.txt should be installed before running tests (see How to run step 3)
 * Server should be running before running selfTest.py (see How to run step 4)
 * To run selTest.py, type the follwing in terminal, outside of app directory

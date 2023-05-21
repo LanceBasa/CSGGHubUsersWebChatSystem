@@ -1,0 +1,18 @@
+---------- Testing with chrome ----------
+Reject non-registered user -- Pass
+Login registered user -- Pass
+Logout registered user -- Pass
+Changed about me -- Pass
+Edited Fav weapons -- Pass
+Check if messages is accessible -- Pass
+Sending message -- Pass
+Clickable username in chat -- Pass
+---------- Testing with Firefox ----------
+Reject non-registered user -- Pass
+Login registered user -- Pass
+Logout registered user -- Pass
+Changed about me -- Pass
+Edited Fav weapons -- Pass
+Check if messages is accessible -- Pass
+Sending message -- Pass
+Clickable username in chat -- Pass

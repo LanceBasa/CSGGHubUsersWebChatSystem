@@ -1,0 +1,833 @@
+* commit f7b043fc6b6ad7ac71872ebbed990422880dedf2 (HEAD -> main, tag: v3.0.0, origin/main, origin/HEAD)
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Mon May 22 02:13:56 2023 +0800
+| 
+|     Final commit - README modified. :)
+|   
+*   commit b13223ddf0a44cfb9aa5c59177e2070abb39bf18
+|\  Merge: cdd0eb6 1c9410b
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Mon May 22 02:06:31 2023 +0800
+| | 
+| |     merge completed of other branch which fix validation
+| | 
+| * commit 1c9410be562f56a2573fcc609d1eded039e18e10
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Mon May 22 01:59:50 2023 +0800
+| | 
+| |     modified readme
+| |   
+| *   commit 0c24b35b85a6c21f2e51f70b5c513331746aa709
+| |\  Merge: 70e50e4 618c091
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Mon May 22 01:57:11 2023 +0800
+| | | 
+| | |     Merge branch 'validateLast'
+| | | 
+| | * commit 618c091859a80aa4925b53cc89631b47621149c3 (origin/validateLast)
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Mon May 22 01:36:01 2023 +0800
+| | | 
+| | |     Done
+| | | 
+| | * commit 10301e377b41654b0869429759665c1de7109acb
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Mon May 22 01:32:02 2023 +0800
+| | | 
+| | |     getingg there...
+| | | 
+| | * commit e7d6983fb36d55a3675444e973155c5fb8c30ea0
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Mon May 22 01:28:15 2023 +0800
+| | | 
+| | |     getting there
+| | | 
+| * | commit 70e50e4a9a0fe4c67d05c8e2720d773f6497ee91 (tag: v2.1.4)
+| |/  Author: LanceBasa <lance_olisco@yahoo.com>
+| |   Date:   Mon May 22 01:30:04 2023 +0800
+| |   
+| |       seleniumTest done
+| | 
+* | commit cdd0eb6ded3b114d01d101cfceff83de6452dfc3
+|/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|   Date:   Mon May 22 02:02:20 2023 +0800
+|   
+|       Added comments to EVERYTHING
+|   
+*   commit 49e3cd2381d43179a7965db0544b8116cc5d56da
+|\  Merge: 58e0a5d e1b3ae6
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Mon May 22 00:59:37 2023 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/LanceBasa/CITS3403-WebProj-23
+| |   
+| *   commit e1b3ae6992a33e7b06437c3efb347972baa13c19
+| |\  Merge: fcd2408 4bd5db8
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Mon May 22 00:53:16 2023 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/LanceBasa/CITS3403-WebProj-23
+| | | 
+| | * commit 4bd5db89635a2424a0e85708a498896516d3b396 (origin/mainHead)
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Mon May 22 00:28:09 2023 +0800
+| | | 
+| | |     fixing main
+| | | 
+| * | commit fcd24086f4d1a79005c07e1992941e2280e59f72
+| |/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |   Date:   Mon May 22 00:51:21 2023 +0800
+| |   
+| |       validation fixed
+| | 
+| * commit 90c8fab9cb1710afc5b11dadd1bd6db280e37781 (tag: v2.1.3, origin/EditProfUserName)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 23:48:50 2023 +0800
+| | 
+| |     fixed edit_profile
+| | 
+* | commit 58e0a5de8bd7d32b73544a13fff5f283362fb9f6
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Mon May 22 00:59:27 2023 +0800
+| | 
+| |     seleniumtest almost finish
+| | 
+* | commit e11dd55a18569cd169046e480a15b7a12828f960
+|/  Author: LanceBasa <lance_olisco@yahoo.com>
+|   Date:   Mon May 22 00:58:17 2023 +0800
+|   
+|       selenium almost done
+| 
+* commit 8bef96c073bae8569de36d24c0469cbfb4f936f7
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Sun May 21 23:11:12 2023 +0800
+| 
+|     selenium testing wip
+| 
+* commit e28e0cdd4e62f02ba3607a49441ed31a78cbebde (origin/UniTestV2)
+| Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| Date:   Sun May 21 22:08:09 2023 +0800
+| 
+|     added test to tests.py
+| 
+* commit 1355646625217f7e821960d2bcf8a2de4583e825
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Sun May 21 21:05:18 2023 +0800
+| 
+|     working on selenium and unit testing
+| 
+* commit 48b428fcad5d11d5d394d7f5dc7013a7fd7b9518
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Sun May 21 18:12:07 2023 +0800
+| 
+|     sahil tests added
+| 
+* commit 658c9284a64155125c9250a03757294a0ee4f7c0 (tag: v2.1.2)
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Sun May 21 16:52:58 2023 +0800
+| 
+|     chat system is good, added clickable username in chat to go to their profile
+|   
+*   commit 5c853d0971c93a1aba86f1033dc219e62da417e1 (tag: v2.1.1)
+|\  Merge: 4ab739e b93314e
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 15:38:46 2023 +0800
+| | 
+| |     Merge branch 'ChatSearch'
+| | 
+| * commit b93314ed5b30656c07644e7a997d9c3408d9b8b6 (origin/ChatSearch)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 15:22:01 2023 +0800
+| | 
+| |     v
+| | 
+| * commit 519c024e3b8d52f9d80b378f4f937ba6ae97e4bf
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 14:16:27 2023 +0800
+| | 
+| |     final final
+| | 
+| * commit 68492e5de255fe1e6a591f9b792fd0a85e8ee5dc
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 14:12:40 2023 +0800
+| | 
+| |     works final
+| | 
+| * commit a7fbe80691f809f8e297fa50d81387843a7c3997
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 14:03:56 2023 +0800
+| | 
+| |     almost there
+| | 
+| * commit b22c7c125584e279369e2f0fd2a70de03b351531
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 13:54:24 2023 +0800
+| | 
+| |     ChatSearchworks
+| | 
+| * commit 719414b0c844a707e9a7173549c3b0c741dbf1fb
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 13:22:07 2023 +0800
+| | 
+| |     displaying chat in descending order
+| | 
+| * commit 37a1e6c0c78894f26f01ead8d5dcf40d5aa0d7c4
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 13:18:01 2023 +0800
+| | 
+| |     chat works
+| | 
+| * commit 42a771fac0f1af0ecbf70d6abda083312fc7b34b
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 11:41:25 2023 +0800
+| | 
+| |     asd
+| | 
+| * commit 7116c38ed5df50c56a5081b3d137286deb7bdb09
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 11:30:50 2023 +0800
+| | 
+| |     js
+| | 
+| * commit 22b303a12a0b124abc834c2585da210799e02153
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 11:26:32 2023 +0800
+| | 
+| |     sockets
+| | 
+| * commit 04bcbdb2e42c90e3ce0c4b28a9cbe90fd7e52232
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 11:23:32 2023 +0800
+| | 
+| |     trying
+| | 
+* | commit 4ab739e3c076212541b293ed9306c3b52ffc665b
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 21 15:28:22 2023 +0800
+| | 
+| |     deleting test folder
+| |   
+* |   commit 020f82a283d2e0415e9e8f5f920a2b8f0db455f7 (tag: v2.1.0)
+|\ \  Merge: 2904896 902e9cb
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sun May 21 15:18:21 2023 +0800
+| | | 
+| | |     Merge branch 'commandsWIP'
+| | | 
+| * | commit 902e9cb3a25955fbcea70949b69d09f8ca37675d (origin/commandsWIP, commandsWorking, commandsWIP)
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sun May 21 15:11:42 2023 +0800
+| | | 
+| | |     moved to ScriptsDB
+| | | 
+| * | commit ff36b67519295bb1f27e82a034ce3dc01e225c31
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sun May 21 14:59:43 2023 +0800
+| | | 
+| | |     special commands complete
+| | | 
+| * | commit a339cb0b44aab6e469e6a2af7b13e56e33b477a3
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sun May 21 03:38:44 2023 +0800
+| | | 
+| | |     need to fix space in rank command otherwise all commands are good to go
+| | | 
+| * | commit 944435e4b814f3304a0f1b64bd1e109f12e99a6c
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sat May 20 17:07:00 2023 +0800
+| | | 
+| | |     most commands working
+| | | 
+| * | commit 1f0817a0ebdabe9ea7808a8b8b19cd257f3fc323
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sat May 20 03:11:23 2023 +0800
+| | | 
+| | |     moved to ScriptsDB folder
+| | | 
+| * | commit a24fee0474015cf73d8534f36fc63c299c4e95e6
+| |/  Author: LanceBasa <lance_olisco@yahoo.com>
+| |   Date:   Sat May 20 03:09:19 2023 +0800
+| |   
+| |       special features in progress
+| |   
+| | * commit 91e4f3a59f9859ee79090de7cbd99ff2f490c28a (origin/Unit-Testing)
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Sun May 21 17:32:37 2023 +0800
+| | | 
+| | |     added few changes to how db is tested
+| | | 
+| | * commit 8c17682d291bf91602981ef5b460bbb4f91b86d0
+| |/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|/|   Date:   Sun May 21 14:19:14 2023 +0800
+| |   
+| |       added testing stuffs some work some don't, dont know why?
+| | 
+* | commit 2904896e403492a1c1191bf60bdf0622f6e8306c (origin/Tidying_up_edit_profile)
+|/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|   Date:   Sun May 21 13:55:13 2023 +0800
+|   
+|       made profile page look pretty + added some CSS to make it look more presentable + centered everything, changed the look of the boxes
+|   
+*   commit ed086c74f0c5aa1b2ccbb7ccb2da9af3f5eb2cbb
+|\  Merge: 14399d6 4eae5fd
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Fri May 19 18:52:30 2023 +0800
+| | 
+| |     Merge branch 'addingSpecialCommands'
+| | 
+| * commit 4eae5fd3f1e96f51f81fd4280f926e2bbf69be29 (origin/addingSpecialCommands, addingSpecialCommands)
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Fri May 19 18:51:24 2023 +0800
+| | 
+| |     wip special commands
+| |   
+| | * commit 2f07dc6605eb62dc2392562822dc5b440478d33b (origin/fixing_main)
+| |/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|/|   Date:   Sun May 21 11:46:10 2023 +0800
+| |   
+| |       yes
+| | 
+* | commit 14399d6b1e73af8d4cc3d0a298925d196097f6c0
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Fri May 19 18:14:10 2023 +0800
+| | 
+| |     Tidy'ed (?) up homepage, added description and helped fix .csv files for maps and guns
+| | 
+* | commit 39295774aa40121d4e6d594a3c7a3033b3dad1cd
+|/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+|   Date:   Fri May 19 16:49:31 2023 +0800
+|   
+|       test folder
+|   
+*   commit 68797b2e09011b58a50517cab3eaaaa8468dc1de
+|\  Merge: 5cfd19c 9c83115
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Thu May 18 22:06:06 2023 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/LanceBasa/CITS3403-WebProj-23
+| |   
+| *   commit 9c831150f58401de5750f69d2abb9a064d03e7b4
+| |\  Merge: 6c279f5 5cb37c8
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Thu May 18 22:02:42 2023 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/LanceBasa/CITS3403-WebProj-23 into main
+| | | 
+| * | commit 6c279f58f163b918488b31779d1d69cc5b5ca136
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Thu May 18 22:01:01 2023 +0800
+| | | 
+| | |     Added scrolling to profile page + check box works with history using DB + private profile boolean works with history
+| | |   
+* | |   commit 5cfd19c62ee8450c570837edeaf7582d90cbc98d
+|\ \ \  Merge: 5cb37c8 704aaf0
+| |_|/  Author: LanceBasa <lance_olisco@yahoo.com>
+|/| |   Date:   Thu May 18 22:05:45 2023 +0800
+| | |   
+| | |       some front end for profile and minor tweaks
+| | | 
+| * | commit 704aaf018048ecabebc501b9027c566ba3f5b9ff (origin/lanceTweaksChat, lanceTweaksChat)
+| | | Author: LanceBasa <111974395+LanceBasa@users.noreply.github.com>
+| | | Date:   Thu May 18 21:30:47 2023 +0800
+| | | 
+| | |     Updated unit number README.md
+| | | 
+| * | commit 67c31770054805915344d5df7a33d51e9b86a37a
+| | | Author: LanceBasa <111974395+LanceBasa@users.noreply.github.com>
+| | | Date:   Thu May 18 21:30:05 2023 +0800
+| | | 
+| | |     Update README.md
+| | | 
+| * | commit 90ca4da059137effbb08323c4c357719ec1deb49
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Thu May 18 21:28:05 2023 +0800
+| | | 
+| | |     Started markdown file and finalizing chat front end design
+| | | 
+* | | commit 5cb37c89f97524af726087d86e78ea44a2dc2470 (tag: v2.0.2, origin/midhinSaveschat)
+|/ /  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |   Date:   Thu May 18 19:20:04 2023 +0800
+| |   
+| |       Messages are added to the database + name of chat author visible+ displaying the last 20 messages
+| | 
+* | commit 333ad6befef48bc3e76ef6bb2983f0463425897c
+|/  Author: LanceBasa <lance_olisco@yahoo.com>
+|   Date:   Thu May 18 18:54:17 2023 +0800
+|   
+|       making chat pretty
+|   
+*   commit a084e69dc797bec7c100fea63ec9a0eb47391a46 (tag: v2.0.1)
+|\  Merge: 8662ccb 108ad95
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Thu May 18 17:52:55 2023 +0800
+| | 
+| |     Merge branch 'NoSocketNoConnection-sah' into Fixed_sockets
+| | 
+| * commit 108ad95d12bde3e597eb2f188c0f7d910c14bf2f (tag: v2.0.0, origin/NoSocketNoConnection-sah)
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Thu May 18 17:25:00 2023 +0800
+| | 
+| |     sockets working
+| | 
+| * commit 81b1b38b1286736b4348f9a7a46c080d04c58fe5
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Thu May 18 17:05:16 2023 +0800
+| | 
+| |     Not very useful commit
+| | 
+| * commit 54395f213cc2952f5b4aaea3aaa680d2e8a6c566 (origin/SocketNoConnection, SocketNoConnection)
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Thu May 18 16:50:58 2023 +0800
+| | 
+| |     thursdaySocket still not working
+| | 
+| * commit 8b0eb2c5c8de58899a909d954bce6451e3011f02
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Thu May 18 14:05:48 2023 +0800
+| | 
+| |     server not connected
+| | 
+* | commit 8662ccb8baf8238a84e8f2d407cbf43da29d0cac (tag: v1.1.10, origin/javascriptValidations, javascriptValidations)
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Wed May 17 23:08:40 2023 +0800
+| | 
+| |     validation for login and register works
+| | 
+* | commit 5b6030a80d3aa7181f12afcf09a0a204e3be63b8
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Wed May 17 20:24:09 2023 +0800
+| | 
+| |     front end profile page styled, minor tweaks added to backend such as visiting player profiles
+| |   
+| | * commit 546047108cd181aad38a1efaa1ae85b5a5d2ca04 (origin/MegaFlaskTutSah)
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Thu May 18 16:29:46 2023 +0800
+| | | 
+| | |     yes
+| | | 
+| | * commit efaa00f0922c9a6d8b0272ec61ffce4e19f07d75
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Mon May 15 17:33:56 2023 +0800
+| | | 
+| | |     Finished flask chpt 6
+| | | 
+| | * commit 9c6b5a966c04020503f1b67f9f70710b21bdc5e2
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Sun May 14 17:10:49 2023 +0800
+| | | 
+| | |     half way through megaflask 6
+| | | 
+| | * commit 7cba3ac2d1062df399c8b8fdcd29ec97fc20c175
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 21:59:38 2023 +0800
+| | | 
+| | |     Adding app.db
+| | | 
+| | * commit 38c3924f00cd2055886469dee54781cc7e533b66
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 21:55:04 2023 +0800
+| | | 
+| | |     half way through profiles
+| | | 
+| | * commit af0827ad7a5a76967d09bd7e8c323f96bb8de170
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 20:30:26 2023 +0800
+| | | 
+| | |     Finished chpt 5
+| | | 
+| | * commit 8e70b6fd3e23027e93533263a22511b0aa1bf7e6
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 17:09:15 2023 +0800
+| | | 
+| | |     Finished chpt 4
+| | | 
+| | * commit 3a833394ac18e452c11f4442e7c0601e73e6268d (origin/Database_error)
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 16:03:31 2023 +0800
+| | | 
+| | |     Fixed bug
+| | | 
+| | * commit c8ee3d1f94ded8ed8bd294614db1f37536059130
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 12 15:54:44 2023 +0800
+| | | 
+| | |     Chapter 3 + half of chapter 4
+| | | 
+| | * commit ec1e8db15f43b0a92232652f0632fd6751758e0f
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Tue May 9 21:26:35 2023 +0800
+| | | 
+| | |     Went half way through chapter 3 will pcik up later megaflask sah
+| | | 
+| | * commit e6cc8f3aa0433e8de22573611476b217c4737ab8
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Tue May 9 20:21:57 2023 +0800
+| | | 
+| | |     Chapter 2 done from megaflask -sah
+| | | 
+| | * commit 9111c031d954380cd26dc2eeed7d395a7861e9bc
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Tue May 9 19:53:52 2023 +0800
+| | | 
+| | |     Chapter 1 for mega flask - sah
+| | | 
+| | * commit 1a74474225cc5ac6b5650aaf93db5dda65910a28 (origin/testing)
+| | | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | | Date:   Fri May 5 16:43:42 2023 +0800
+| | | 
+| | |     Made a new branch for playing around and testing
+| | |   
+| | | * commit 0780d2c7cb4715980702e04cf539efb00b6b0f73 (origin/MidhiV5onLance)
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 23:19:11 2023 +0800
+| | | | 
+| | | |     profie working; edit not
+| | | | 
+| | | * commit 85ff1ba1329e152af5152c41a964dc15fdada63a (MidhiV5onLance)
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 23:07:57 2023 +0800
+| | | | 
+| | | |     req
+| | | | 
+| | | * commit cd8b13a2d7010cf160f85025e8abf0fef6f1175c
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 23:06:39 2023 +0800
+| | | | 
+| | | |     db
+| | | | 
+| | | * commit 156f843646d5e05314fb3e6b4cdbe31136e45a26
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 23:05:36 2023 +0800
+| | | | 
+| | | |     text added
+| | | | 
+| | | * commit eb0ebcf66edde1421ab91e61a77a9818a9ff33ce
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 22:56:35 2023 +0800
+| | | | 
+| | | |     minor bug
+| | | | 
+| | | * commit 90c018b2220b6368cbf62e5ca854d33165c6bec3
+| | | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | | Date:   Wed May 17 22:48:44 2023 +0800
+| | | | 
+| | | |     chat.html working
+| | | | 
+| | | * commit 8889ded72e04a618653ac3e479346a51378ead46
+| | |/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |/|   Date:   Wed May 17 21:48:04 2023 +0800
+| | |   
+| | |       added RoomUser
+| | |   
+| | | * commit 19708d9af8169b565b11b8ac155835f8ff403063 (origin/modifV2-Mi)
+| | |/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |/|   Date:   Wed May 17 19:43:28 2023 +0800
+| | |   
+| | |       just db bro
+| | |   
+| | | * commit 21a7459dbf664ac24b7d1460652d330af89a2240 (origin/modifiedProfileBackend, modifiedProfileBackend)
+| | |/  Author: LanceBasa <lance_olisco@yahoo.com>
+| |/|   Date:   Wed May 17 14:54:24 2023 +0800
+| | |   
+| | |       socket broken
+| | | 
+| * | commit 3afec13c8be9389f3ee30edb616802432c0815dc
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Wed May 17 11:25:48 2023 +0800
+| | | 
+| | |     still half working
+| | | 
+| * | commit 25d117f8e6038301f9d91a1095322496950ee653
+|/ /  Author: LanceBasa <lance_olisco@yahoo.com>
+| |   Date:   Tue May 16 21:39:42 2023 +0800
+| |   
+| |       socket half working
+| | 
+* | commit 698172c3d57975fe2e98311045b3b4826d8ab5b6
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Tue May 16 18:02:46 2023 +0800
+| | 
+| |     some minor tweaks for profile
+| |   
+* |   commit 97009e20b20f7ad4892d9140759be80a7572fac5 (tag: v1.1.9)
+|\ \  Merge: 215701c 639fd56
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Tue May 16 13:26:36 2023 +0800
+| | | 
+| | |     Merge branch 'mapsUpgrade'
+| | | 
+| * | commit 639fd56e57d2fe452709dac0e35929f08f46ea88 (origin/mapsUpgrade)
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Tue May 16 13:25:24 2023 +0800
+| | | 
+| | |     final final
+| | | 
+| * | commit 4ef3a4fcff3b7c98d03341cdb0448b718fbed288
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Tue May 16 12:45:47 2023 +0800
+| | | 
+| | |     weapons table populated
+| | | 
+| * | commit 5ac98cc5676704f9df683432236fc702fea651e7
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Tue May 16 12:04:42 2023 +0800
+| | | 
+| | |     Add files via upload
+| | | 
+| * | commit dafb5acfec28731957300d9049054b167b35ee15
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Tue May 16 11:51:28 2023 +0800
+| | | 
+| | |     weapons.csv
+| | | 
+* | | commit 215701c11626235870a793e6176842ebf1484a93
+|/ /  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |   Date:   Tue May 16 11:50:27 2023 +0800
+| |   
+| |       weapons,csv
+| | 
+* | commit 973269c4ff662cf399b88133ae0e61bf05f1dff6 (origin/DatabseInteract)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Mon May 15 22:19:30 2023 +0800
+| | 
+| |     Maps Fav working
+| |   
+| | * commit f2434fbf04439edfb45c44b720fe4b1edc8dc62f (origin/MyProfile)
+| |/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|/|   Date:   Mon May 15 22:25:20 2023 +0800
+| |   
+| |       updated db
+| | 
+* | commit 0e77317166e2b1864675c9b3465a07d0b6cc93ef (tag: v1.1.8)
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Mon May 15 20:20:10 2023 +0800
+| | 
+| |     profile kinda WIP
+| | 
+* | commit 2fa436e97982b620c1ed94833989b8f24663e4e8
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Mon May 15 17:58:58 2023 +0800
+| | 
+| |     Added IMAGESgit add app/templates/profile.html  for user profiles
+| | 
+* | commit fea1cb6b38d7ef5ceaa822c3908f180c78ba75b1
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Mon May 15 17:49:33 2023 +0800
+| | 
+| |      added avatar to models.py
+| | 
+* | commit d392e8aa4501647cae5d9bc3a7d49001e63da83b
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Mon May 15 17:40:13 2023 +0800
+| | 
+| |     Fixed error
+| |   
+* |   commit e7fa638456d51a706eabe527115bb39953085fec (tag: v1.1.7)
+|\ \  Merge: d153f1b 5b70e7c
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sun May 14 16:34:55 2023 +0800
+| | | 
+| | |     minor tweaks
+| | | 
+| * | commit 5b70e7c8ffc2c433fd767034276215bbfb405854
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sun May 14 14:56:45 2023 +0800
+| | | 
+| | |     populated ranks table
+| | | 
+* | | commit d153f1bac81508d3467de8e7d9deae94fc68081b
+|/ /  Author: LanceBasa <lance_olisco@yahoo.com>
+| |   Date:   Sun May 14 16:33:59 2023 +0800
+| |   
+| |       minor tweaks
+| | 
+* | commit 8196be76cc2f619dd7606e2a5bcc41ba517121fa (tag: v1.1.6)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 14 14:26:04 2023 +0800
+| | 
+| |     deleted weap.csv
+| | 
+* | commit 0cd672c15bd365e0553801c4e5dd1e1efd12a595
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Sun May 14 14:25:20 2023 +0800
+| | 
+| |     db structure WIP
+| |   
+* |   commit 6ee9f476fe3df48561f3b5f8bc8b1f24914a08ed
+|\ \  Merge: 67b7ff0 fc706f0
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sun May 14 14:22:48 2023 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/LanceBasa/CITS3403-WebProj-23
+| | | 
+| * | commit fc706f028198272e82ffcf9b7a5a7fd95d74c247 (tag: v1.1.4, origin/frontend, frontend)
+| | | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Sat May 13 23:07:17 2023 +0800
+| | | 
+| | |     all front end pages WIP
+| | |   
+| | | * commit fb824a53c8f877b5b3e792ac1968bfdc59420458 (tag: v1.1.5, origin/databaseUpdate)
+| |_|/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+|/| |   Date:   Sun May 14 14:10:54 2023 +0800
+| | |   
+| | |       weapon database update + maps table populated
+| | | 
+* | | commit 67b7ff00981d5e1e73a48e472ee30deb0113549e
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 19:34:42 2023 +0800
+| | | 
+| | |     tryna utf-8
+| | | 
+* | | commit 2959690f9279977cce16b77dfe8989daf547d52c
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 19:30:45 2023 +0800
+| | | 
+| | |     delete csv
+| | | 
+* | | commit 55c79f8744bc6b8a44d8f5bf9d42d29bbac6ede9
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 19:10:31 2023 +0800
+| | | 
+| | |     Add files via upload
+| | | 
+* | | commit b2e15247f0b08d843fcf5f2a9050748f4dd23721
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 19:06:44 2023 +0800
+| | | 
+| | |     Add files via upload
+| | | 
+* | | commit 43a4a5442782de12132f4aabe177c9eac81a0a7d
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 18:49:39 2023 +0800
+| | | 
+| | |     added weapons category
+| | | 
+* | | commit a7137a5ff25b3ae4d8149d2a81d7f1cbe8de0c0c
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 18:41:07 2023 +0800
+| | | 
+| | |     Database added and migrated
+| | | 
+* | | commit b140742a24e19e029e352254ec550ad0186d3f98
+| | | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | | Date:   Sat May 13 13:53:51 2023 +0800
+| | | 
+| | |     private attribute for User
+| | | 
+* | | commit 8f309682de4d241883d0cb72a77357a150b02384
+|/ /  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| |   Date:   Sat May 13 13:40:14 2023 +0800
+| |   
+| |       updated database
+| | 
+* | commit 7ec6dbd89aaa8cf66d167ff89fb63d6794e88ce9 (tag: v1.1.3)
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Fri May 12 21:55:45 2023 +0800
+| | 
+| |     Wecome page almost done
+| |   
+| | * commit 2e0577ebcc5ac8ae078f1d7f3be56ea57dc1bc82 (test)
+| |/| Merge: 29a87b5 e73f779
+|/| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | | Date:   Fri May 12 15:28:27 2023 +0800
+| | | 
+| | |     merging lance to main
+| | | 
+| | * commit e73f779432b179c92a882ac8c569ffabc4d8b510 (origin/frontEndPages, frontEndPages)
+| |/  Author: LanceBasa <lance_olisco@yahoo.com>
+| |   Date:   Fri May 5 16:48:29 2023 +0800
+| |   
+| |       woring on login front end
+| | 
+* | commit 29a87b55658ac808f70956cf426b29250a089390 (tag: v1.1.2)
+| | Author: LanceBasa <lance_olisco@yahoo.com>
+| | Date:   Fri May 12 12:44:55 2023 +0800
+| | 
+| |     tag testing
+| | 
+* | commit 7b18be41ce6ed5c66c329042f6d1244b0926fe38 (tag: v1.1.0)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Fri May 12 12:31:39 2023 +0800
+| | 
+| |     v1.1.0
+| | 
+* | commit 91e02622a693c8c0781c6762b18c6cb2c0540bb1
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Fri May 12 12:31:12 2023 +0800
+| | 
+| |     v1.1.0
+| |   
+* |   commit d685f48460ab79d06fc86631cff735c41e784010
+|\ \  Merge: 0595721 f1bba95
+| |/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+|/|   Date:   Thu May 11 14:50:18 2023 +0800
+| |   
+| |       Merge pull request #1 from LanceBasa/MidhinLogIn/Register
+| |       
+| |       Midhin log in/register
+| | 
+| * commit f1bba952571b1dd837c52af96174f50bc57021f9 (origin/MidhinLogIn/Register)
+| | Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+| | Date:   Thu May 11 14:42:05 2023 +0800
+| | 
+| |     final
+| | 
+| * commit 5d352b20ad1de86f52d25107552859eb6d042c89
+|/  Author: MidhinV <110954433+MidhinV@users.noreply.github.com>
+|   Date:   Mon May 8 19:37:37 2023 +0800
+|   
+|       LogIn/Register
+| 
+* commit 05957211cf78312aadc173c7658174bd2d437434
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Fri May 5 13:23:58 2023 +0800
+| 
+|     freezing requirements.txt
+| 
+* commit d3f8327d88538efa58a7035630331621a5695ed4
+| Author: LanceBasa <lance_olisco@yahoo.com>
+| Date:   Fri May 5 13:22:37 2023 +0800
+| 
+|     start project create flask and base templates
+|   
+| * commit 699665cb383fde2d7cdfc24a893a77f4604f5032 (origin/Lance-Flask-Tutorial, Lance-Flask-Tutorial)
+| | Author: lancebasa <lance_olisco@yahoo.com>
+| | Date:   Fri Apr 21 18:15:52 2023 +0800
+| | 
+| |     changed file names
+| | 
+| * commit 25ccd6e0b6c0f8996a2845882f12d7ff12351563
+|/  Author: lancebasa <lance_olisco@yahoo.com>
+|   Date:   Fri Apr 21 18:03:57 2023 +0800
+|   
+|       doin flask
+|   
+| * commit df7bf31b74263711acfbabf52fced5707514f1dc (origin/Sahil-flask)
+| | Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| | Date:   Fri Apr 21 18:15:33 2023 +0800
+| | 
+| |     Buttons and stuff / end of tutorial
+| | 
+| * commit c76d2fd5197cf1a11e97abfb2edcfe0aeeb5dd43
+|/  Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+|   Date:   Fri Apr 21 18:00:38 2023 +0800
+|   
+|       My first proper commit using the Big boy notes
+| 
+* commit 0a6491ac28a38697df3592004fa3fcfe91374b61 (tag: v1.0.0)
+| Author: Sahil Narula <126839546+Hunkhill1@users.noreply.github.com>
+| Date:   Fri Apr 21 16:10:26 2023 +0800
+| 
+|     Added Sahil to the members list :3
+| 
+* commit 3ba35f5f5bc2a9878f4e829d2b7b2246ccdb62af
+| Author: LanceBasa <111974395+LanceBasa@users.noreply.github.com>
+| Date:   Fri Apr 21 08:01:47 2023 +0800
+| 
+|     Added Lance as a member of the project
+| 
+* commit 2e590d3b4b02baca8d6b1499005726dbec2c10e3
+  Author: LanceBasa <111974395+LanceBasa@users.noreply.github.com>
+  Date:   Fri Apr 21 15:54:32 2023 +0800
+  
+      Initial commit
