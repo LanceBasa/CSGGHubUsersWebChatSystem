@@ -10,10 +10,10 @@ def chat_to_dict(chat):
     return {
         "id": chat.id,
         "text": chat.text,
-        "username": chat.author.username,  # Use author instead of user
-        "created_at": chat.created_at.isoformat(),  # Convert datetime to string
-        # Add other fields as needed...
+        "username": chat.author.username,
+        "created_at": chat.created_at.strftime("%Y-%m-%d %H:%M:%S UTC"),  # Format the datetime as desired
     }
+
 
 @socketio.on("new_message", namespace='/chat')
 def handle_new_message(message):
@@ -23,9 +23,15 @@ def handle_new_message(message):
         db.session.add(chat_message)
         db.session.commit()
         print(f"New message: {message}", file=sys.stderr)
-        emit("chat", {"message": message, "username": current_user.username}, broadcast=True, room=room)
+        message_data = {
+            "message": message,
+            "username": current_user.username,
+            "created_at": chat_message.created_at.isoformat(),
+        }
+        emit("chat", message_data, broadcast=True, room=room)
     else:
         print("Error: Unauthenticated user tried to send a message", file=sys.stderr)
+
 
 @socketio.on('connect', namespace='/chat')
 def handle_connect(data):
