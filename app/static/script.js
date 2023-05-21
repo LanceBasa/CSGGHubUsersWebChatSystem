@@ -29,27 +29,22 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     // Listen for keyup event on the search input field
-    // Listen for keyup event on the search input field
     document.getElementById('search').addEventListener('keyup', function() {
         var searchQuery = this.value;
         socket.emit("search_message", {query: searchQuery, page: 1});
     })
 
-
     // Handle search results from the server
     socket.on("search_results", function(results) {
         // Clear existing chat messages
-        document.getElementById('messages').innerHTML = "";
+        document.getElementById('chatMessages').innerHTML = "";
     
         // Add each result to the chat window
         for (var i = 0; i < results.length; i++) {
             var message = results[i];
-            var node = document.createElement('li');
-            node.textContent = message.username + ": " + message.text;
-            document.getElementById('messages').appendChild(node);
+            appendMessage(message.text, message.username);
         }
     });
-    
     
     function appendMessage(message, username) {
         let ul = document.getElementById("chatMessages");
