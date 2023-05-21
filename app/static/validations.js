@@ -55,6 +55,12 @@ function registerValidation(currentFormId){
             errorBox.style.display = 'block';
         }
 
+        if (password.length<6) {
+            event.preventDefault(); // Prevent form submission
+            errorBox.textContent += 'Password must be 6 characters or more \n';
+            errorBox.style.display = 'block';
+        }
+
         var alphanumericPattern = /^[a-zA-Z0-9]+$/;
         if (!alphanumericPattern.test(username)) {
             event.preventDefault(); // Prevent form submission
