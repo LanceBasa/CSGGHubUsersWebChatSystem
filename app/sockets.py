@@ -9,6 +9,8 @@ from sqlalchemy.orm import joinedload
 
 from datetime import datetime, timezone
 
+# Helper function to convert a Chat object to a dictionary
+
 def chat_to_dict(chat):
     return {
         "id": chat.id,
@@ -30,10 +32,7 @@ def handle_user_join(data):
     username = current_user.username  # Assuming you have the username of the current user
     join_message = f"User '{username}' has joined the chat"
     emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
-
-
-
-
+    
 @socketio.on("new_message", namespace='/chat')
 def handle_new_message(message):
     if current_user.is_authenticated:
@@ -59,7 +58,6 @@ def handle_connect(data):
     emit('load_messages', messages)
 
     emit('status', {'msg': 'New client connected!'}, room=room)
-
 
 # for adding entered message in the chat to the database and emitting it back to chatbox
 @socketio.on("new_message", namespace='/chat')
@@ -98,10 +96,9 @@ def handle_new_message(message):
     else:
         print("Error: Unauthenticated user tried to send a message", file=sys.stderr)
 
-
-
 #------------- for running special commands---------------------------------
 
+# Get favorite weapons of a user
 def get_user_fav_weapons(username):
     user = User.query.filter_by(username=username).first()
     if user:
@@ -119,15 +116,14 @@ def get_user_fav_weapons(username):
         return user
     return 'Username not found'
 
-
+# Get all weapon names
 def get_all_weapon_names():
     weapon_names = Weapon.query.all()
     weapon_names=sorted(set(weapon.weapon_name for weapon in weapon_names))
     weapon_names = "Weapons List:,\n" + ", ".join(weapon_names)
     return weapon_names
 
-
-
+# Get weapons by category
 def get_weapons_by_category(category):
     weapons = Weapon.query.filter_by(category=category).all()
     if not weapons:
@@ -139,15 +135,14 @@ def get_weapons_by_category(category):
     weapons = category + " list:," + ", ".join(weapons)
     return weapons
 
-
-
+# Get all maps
 def get_all_maps():
     maps = Map.query.all()
     maps =sorted(set(map.map_name for map in maps))
     maps = "Maps List:," + ",".join(maps)
     return maps
      
-
+# Get weapon by name
 def get_weapon_by_name(name):
     weapon = Weapon.query.filter_by(weapon_name=name).first()
     if weapon:
@@ -157,7 +152,7 @@ def get_weapon_by_name(name):
     return "No such weapon found. Please use command, ~weapList, to list all available weapons"
 
 
-
+# Get player rank by name
 def get_player_rank(name):
     user = User.query.filter_by(username=name).first()
     if user:
@@ -172,6 +167,7 @@ def get_player_rank(name):
         return user
     return 'Username not found'
 
+# Get favorite maps of a user
 def get_user_fav_maps(username):
     user = User.query.filter_by(username=username).first()
     if user:
@@ -189,14 +185,14 @@ def get_user_fav_maps(username):
         return user
     return 'Username not found'
 
-
-
+# Get all available commands
 def get_all_commands():
     commands = Commands.query.all()
     command_names = sorted(set(command.command_name + ":    " + command.command_desc for command in commands))
     command_names = "Here are the commands available:,\n" + ", ".join(command_names)
     return  command_names
 
+# Get map by name
 def get_map_by_name(name):
     map = Map.query.filter_by(map_name=name).first()
     if map:

@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
 {% block styling %}
+<!-- Custom CSS -->
+
 <style>
     body{
-        background: url('/static/ProfileBg.jpg'), radial-gradient(rgb(50, 22, 175) 0%, rgb(0, 0, 0) 100%);
-        background-repeat: no-repeat;
-        background-size:cover;
+        background: url('/static/ProfileBg.jpg'), radial-gradient(rgb(50, 22, 175) 0%, rgb(0, 0, 0) 100%); /* Set background image with gradient */
+        background-repeat: no-repeat; /* Disable background image repetition */
+        background-size:cover; /* Adjust background size to cover the entire element */
     }
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- Content section -->
+
 <div class="profileBox col-11">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -21,20 +25,20 @@
     {% endwith %}
     <div class="row">
         <div class="col-2">
-            <img class= "profileImage" src="{{ user.avatar(128) }}" alt="profileImage">
+            <img class= "profileImage" src="{{ user.avatar(128) }}" alt="profileImage"> <!-- Display user's profile image -->
             
             {% if current_user == user %}
-    <p style="text-align: center;"><a href="{{ url_for('edit_profile') }}" class="edit-button">Edit profile</a></p>
+    <p style="text-align: center;"><a href="{{ url_for('edit_profile') }}" class="edit-button">Edit profile</a></p> <!-- Display "Edit profile" link if the current user is viewing their own profile -->
 {% endif %}
         </div>
         <div class="profileInfo offset-1 col-9">
-            <h1>User:  {{user.username }}</h1>
+            <h1>User:  {{user.username }}</h1> <!-- Display user's username -->
             <h2>About me</h2>
             {% if user.about_me %}
-                <p>{{ user.about_me }}</p>
+                <p>{{ user.about_me }}</p> <!-- Display user's "about me" information -->
             {% endif %}
             {% if user.last_seen %}
-                <p>Last seen on: {{ user.last_seen }}</p>
+                <p>Last seen on: {{ user.last_seen }}</p> <!-- Display user's last seen information -->
             {% endif %}
         </div>
     </div>
@@ -49,7 +53,7 @@
             {% if user.fav_maps %}
                 <ul>
                     {% for fav_map in user.fav_maps %}
-                        <li>{{ fav_map.map.map_name }}</li>
+                        <li>{{ fav_map.map.map_name }}</li> <!-- Display user's favorite maps -->
                     {% endfor %}
                 </ul>
             {% endif %}
@@ -61,7 +65,7 @@
             {% if user.fav_weapons %}
                 <ul>
                     {% for fav_weapon in user.fav_weapons %}
-                        <li>{{ fav_weapon.weapon.weapon_name }}</li>
+                        <li>{{ fav_weapon.weapon.weapon_name }}</li> <!-- Display user's favorite weapons -->
                     {% endfor %}
                 </ul>
             {% endif %}

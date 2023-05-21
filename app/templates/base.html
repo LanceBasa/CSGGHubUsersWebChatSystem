@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style.css">
 
+     <!-- Custom CSS -->
     {% block styling %}
     {% endblock %}
 </head>
@@ -16,10 +18,13 @@
 
     <div>
         <header>
+            <!-- Navigation Bar -->
             <nav class="navbar navbar-expand-sm  navigation ">
                 {% if current_user.is_anonymous %}
+                <!-- Logo for anonymous users -->
                 <a class="navbar-brand" href="{{ url_for('homePage') }}"><img class="logo" src="../static/LogoNav.png" alt="CSSGLogo"></a>
                 {% else %}
+                <!-- Logo for authenticated users -->
                 <a class="navbar-brand" href="{{ url_for('homePage') }}"><img class="logo" src="../static/Logo2Nav.png" alt="CSSGLogo"></a>
                 {% endif %}
 
@@ -27,6 +32,7 @@
                 <div class="collapse navbar-collapse pos" >
                     <ul class="navbar-nav">
                         {% if current_user.is_anonymous %}
+                        <!-- Menu items for anonymous users -->
                         <!-- <li >
                             <a class="col-6"  href="{{ url_for('homePage') }}"><img  src="../static/WelcomeNav.png" alt="Welcome"></span></a>
                         </li> -->
@@ -37,6 +43,7 @@
                             <a class="col-6" href="{{ url_for('register') }}"><img class="navicons" src="../static/RegisterNav.png" alt="Register"></a>
                         </li>
                         {% else %}
+                        <!-- Menu items for authenticated users -->
                         <li>
                             <a class="col-6" href="{{ url_for('profile', username=current_user.username) }}"><img class="navicons" src="../static/ProfileNav.png" alt="My Profile"></a>
                         </li>
@@ -56,6 +63,7 @@
     {% block content%}
 
     {% endblock %}    
+     <!-- Include custom JavaScript -->
     <script src="{{ url_for('static', filename='validations.js') }}"></script>
 
 </body>

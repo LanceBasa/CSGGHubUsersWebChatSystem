@@ -1,50 +1,53 @@
 {% extends "base.html" %}
 
 {% block styling %}
+<!-- Custom CSS -->
 <style>
     body{
-        background: url('/static/RegisterBg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
+        background: url('/static/RegisterBg.jpg'); /* Set background image */
+        background-size: cover;  /* Adjust background size to cover the entire element */
+        background-repeat: no-repeat; /* Disable background image repetition */
     }
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- Content section -->
+
 <div class="login">
     <h1>Register</h1>
     <form method="post" id="registerForm">
-        <div id="errorBox" style="color: red; display:none; white-space: pre-line;"></div>
-        {{ form.hidden_tag() }}
+        <div id="errorBox" style="color: red; display:none; white-space: pre-line;"></div> <!-- Display error messages -->
+        {{ form.hidden_tag() }} <!-- Include hidden fields for CSRF protection -->
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            {{ form.username(size=32) }}<br> <!-- Display username input field -->
             {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: red;">[{{ error }}]</span> <!-- Display username validation errors -->
             {% endfor %}
         </p>
         <p>
             {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
+            {{ form.email(size=64) }}<br> <!-- Display email input field -->
             {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: red;">[{{ error }}]</span> <!-- Display email validation errors -->
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+            {{ form.password(size=32) }}<br> <!-- Display password input field -->
             {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: red;">[{{ error }}]</span> <!-- Display password validation errors -->
             {% endfor %}
         </p>
         <p>
             {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
+            {{ form.password2(size=32) }}<br> <!-- Display password confirmation input field -->
             {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: red;">[{{ error }}]</span> <!-- Display password confirmation validation errors -->
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit() }}</p> <!-- Display submit button -->
     </form>
 </div>
 

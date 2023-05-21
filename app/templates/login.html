@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 
 {% block styling %}
+<!-- Custom CSS -->
 <style>
     body{
-        background: url('/static/LoginBg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
+        background: url('/static/LoginBg.jpg'); /* Set background image */
+        background-size: cover; /* Adjust background size to cover the entire element */
+        background-repeat: no-repeat; /* Disable background image repetition */
     }
 </style>
 {% endblock %}
 
 {% block content %}
+<!-- Content section -->
+
 <div class="login">
     <h1>Sign In</h1>
     <form method="post" id="loginForm" >
@@ -19,11 +22,11 @@
         {{ form.hidden_tag() }}
 
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <span style="color: red" class="alert">{{ message }}</span>
-            {% endfor %}
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <span style="color: red" class="alert">{{ message }}</span>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
         <p>
             {{ form.username.label }}<br>

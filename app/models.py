@@ -5,11 +5,13 @@ from flask_login import UserMixin
 from app import login
 from hashlib import md5
 
+# User loader function for Flask-Login
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
 class User(UserMixin, db.Model):
+    # User model representing the user table in the database
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -38,6 +40,7 @@ class User(UserMixin, db.Model):
     
 
 class Chat(db.Model):
+    # Chat model representing the chat table in the database
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(500))
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -48,6 +51,7 @@ class Chat(db.Model):
 
 
 class FavWeapon(db.Model):
+    # FavWeapon model representing the many-to-many relationship between users and favorite weapons
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     weapon_id = db.Column(db.Integer, db.ForeignKey('weapon.id'))
@@ -56,6 +60,7 @@ class FavWeapon(db.Model):
         return '<FavWeapon {}>'.format(self.id)
 
 class Weapon(db.Model):
+    # Weapon model representing the weapon table in the database
     id = db.Column(db.Integer, primary_key=True)
     weapon_name = db.Column(db.String(64), unique=True)
     category = db.Column(db.String(64))
@@ -66,6 +71,7 @@ class Weapon(db.Model):
         return '<Weapon {}>'.format(self.weapon_name)
 
 class FavMap(db.Model):
+    # FavMap model representing the many-to-many relationship between users and favorite maps
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     map_id = db.Column(db.Integer, db.ForeignKey('map.id'))
@@ -74,6 +80,7 @@ class FavMap(db.Model):
         return '<FavMap {}>'.format(self.id)
 
 class Map(db.Model):
+    # Map model representing the map table in the database
     id = db.Column(db.Integer, primary_key=True)
     map_name = db.Column(db.String(64), unique=True)
     map_about = db.Column(db.String(500))
@@ -83,6 +90,7 @@ class Map(db.Model):
         return '<Map {}>'.format(self.map_name)
 
 class Rank(db.Model):
+    # Rank model representing the rank table in the database
     id = db.Column(db.Integer, primary_key=True)
     rank_name = db.Column(db.String(64), unique=True)
     users = db.relationship('User', backref='rank', lazy='dynamic')
@@ -92,6 +100,7 @@ class Rank(db.Model):
     
     
 class Commands(db.Model):
+    # Commands model representing the commands table in the database
     id = db.Column(db.Integer, primary_key=True)
     command_name = db.Column(db.String(16), unique=True)
     command_desc = db.Column(db.String(64))

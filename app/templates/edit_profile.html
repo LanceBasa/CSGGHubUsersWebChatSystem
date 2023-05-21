@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block styling %}
+<!-- Custom CSS -->
 <style>
     body{
-        background: url('/static/EditProfileBg.jpg');
-        background-repeat: no-repeat;
-        background-size:cover;
+        background: url('/static/EditProfileBg.jpg'); /* Set background image */
+        background-repeat: no-repeat; /* Disable background image repetition */
+        background-size:cover; /* Adjust background size to cover the entire element */
         }
 </style>
 {% endblock%}
 
 
 {% block content %}
+<!-- Content section -->
 <h1 class="edit_profile_heading"><b>Edit Profile</b></h1>
+<!-- Flash messages -->
 {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -20,23 +23,25 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
+
+<!-- Profile editing form -->        
 <form action="" method="post" style=" text-align: center;">
     {{ form.hidden_tag() }}
     <p>
         <div>
         <label style="display: block; text-align: center; color: rgb(0, 229, 255);">{{ form.username.label }}</label><br>
         {{ form.username(size=32, style=";color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
-        {% for error in form.username.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+            {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </div>
     </p>
     <p>
         <label style=" max-height: 100px; display: inline-block; color: rgb(255, 0, 0);">{{ form.about_me.label }}</label><br>
         {{ form.about_me(size=100,  style="width: 500px; height: 100px; color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
-        {% for error in form.about_me.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+            {% for error in form.about_me.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
     </p>
         <p>
             <div class="private">
@@ -48,8 +53,8 @@
 <div class="playerFavs col-10">
     <div class="gunsAndMaps  col-3">
         <h2 >Favorite Maps:</h2>
-        
             <ul class="scroll_editpage">
+                <!-- Loop through favorite map choices -->
                 {% for map_id, map_name in form.fav_maps.choices %}
                     <li class="edit_favs">
                         <input type="checkbox" id="fav_map_{{ map_id }}" name="fav_maps" value="{{ map_id }}"
@@ -62,8 +67,8 @@
 
     <div class="gunsAndMaps  col-3">
         <h2 >Favorite Weapons:</h2>
-       
             <ul class="scroll_editpage">
+                <!-- Loop through favorite weapon choices -->
                 {% for weapon_id, weapon_name in form.fav_weapons.choices %}
                     <li class="edit_favs">
                         <input type="checkbox" id="fav_weapon_{{ weapon_id }}" name="fav_weapons" value="{{ weapon_id }}"

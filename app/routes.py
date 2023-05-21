@@ -8,9 +8,6 @@ from app.models import User,Map, FavMap, Weapon, FavWeapon, Commands, Chat
 from flask_socketio import SocketIO, emit
 from sqlalchemy import or_
 
-
-
-
 #libraries to redirect a non-logged in user back to the login page when they tries
 #to access the protected index page
 from flask import request
@@ -18,7 +15,7 @@ from werkzeug.urls import url_parse
 from app import db
 from app.forms import RegistrationForm
 
-
+# Importing necessary modules and packages
 
 @app.route('/')
 def homePage():
@@ -42,17 +39,10 @@ def profile(username):
         # if not view the user profile
         if anotherUser.private:
             flash(f"User '{username}' has set their profile to private. You have been redirected to your profile")
-            
+
         else:
             return render_template("profile.html", title='My Profile', user=anotherUser)
-
-
     return render_template("profile.html", title='My Profile', user=user)
-
-
-
-
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -96,8 +86,6 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-
-
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -111,13 +99,9 @@ def edit_profile():
         if user is not None and user.id != current_user.id: 
             flash('Username already in use, please choose a different one.')
             return redirect(url_for('edit_profile')) # redirect back to 'edit_profile'
-
-        
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
-
         current_user.private= form.isPrivate.data
-
         fav_map_ids = request.form.getlist('fav_maps')
         fav_weapon_ids = request.form.getlist('fav_weapons')
 
@@ -177,7 +161,6 @@ def get_weapons_by_category(category):
     weapons = Weapon.query.filter_by(category=category).all()
     return weapons
 
-
 def get_all_maps():
     maps = Map.query.all()
     return maps
@@ -206,11 +189,5 @@ def get_user_fav_maps(username):
         return [fav_map.map.map_name for fav_map in fav_maps]
     return 'Username not found'
 
-
 def get_all_commands():
     commands = Commands.query.with_entities(Commands.name).all()
-
-
-
-
-

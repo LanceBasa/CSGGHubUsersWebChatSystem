@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block styling %}
+<!-- Custom CSS -->
 <style>
     body{
-        background: url('/static/ChatBg.jpg');
-        background-size: 100%;
+        background: url('/static/ChatBg.jpg'); /* Set background image */
+        background-size: 100%; /* Adjust background size */
     }
 </style>
+<!-- Include Socket.IO library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<!-- Include custom JavaScript -->
 <script src="../static/script.js"></script>
 {% endblock %}
 
