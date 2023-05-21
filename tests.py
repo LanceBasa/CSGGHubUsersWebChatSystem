@@ -37,6 +37,35 @@ class UserTestCase(unittest.TestCase):
     def test_fav_map_representation(self):
         fm = FavMap()
         self.assertEqual(str(fm), '<FavMap None>')
+    
+    def test_user_representation(self):
+        u = User(username='test', email='test@example.com')
+        db.session.add(u)
+        db.session.commit()
+        self.assertEqual(str(u), '<User test>')
+
+    def test_chat_save(self):
+        u = User(username='test', email='test@example.com')
+        db.session.add(u)
+        db.session.commit()
+        c = Chat(text='Hello, world!', user_id=u.id)
+        db.session.add(c)
+        db.session.commit()
+        retrieved_chat = Chat.query.filter_by(user_id=u.id).first()
+        self.assertIsNotNone(retrieved_chat)
+        self.assertEqual(retrieved_chat.text, 'Hello, world!')
+
+    def test_weapon_representation(self):
+        w = Weapon(weapon_name='AK-47', category='Rifle', description='Powerful and reliable rifle.')
+        self.assertEqual(str(w), '<Weapon AK-47>')
+
+    def test_map_representation(self):
+        m = Map(map_name='Dust II')
+        self.assertEqual(str(m), '<Map Dust II>')
+
+    def test_command_representation(self):
+        cmd = Commands(command_name='Help', query_command='/help')
+        self.assertEqual(str(cmd), '<Commands Help>')
        
 if __name__ == '__main__':
     unittest.main(verbosity=2)
