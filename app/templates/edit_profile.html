@@ -20,11 +20,11 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
-<form action="" method="post" style=" text-align: center;">
+<form  method="post" style=" text-align: center;">
     {{ form.hidden_tag() }}
     <p>
         <div>
-        <label style="display: block; text-align: center; color: rgb(0, 229, 255);">{{ form.username.label }}</label><br>
+        {{ form.username.label(class="text-center", style="display: block; color: rgb(0, 229, 255);") }}<br>
         {{ form.username(size=32, style=";color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
         {% for error in form.username.errors %}
         <span style="color: red;">[{{ error }}]</span>
