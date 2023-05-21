@@ -18,45 +18,59 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     socket.on("chat", function(data) {
-        appendMessage(data["message"], data["username"]);
-    })
+        appendMessage(data.message, data.username, data.created_at);
+    });
+    
+    
     
 
 
     socket.on("load_messages", function(messages) {
-        for(let message of messages) {
-            appendMessage(message.text, message.username);
+        console.log(messages);
+        for (let message of messages) {
+            appendMessage(message.text, message.username, message.created_at);
         }
-    })
+    });
     
 
-    function appendMessage(message, username) {
+    // Listen for keyup event on the search input field
+    // Listen for keyup event on the search input field
+    document.getElementById('search').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            var searchQuery = this.value;
+            socket.emit('search_message', { searchQuery: searchQuery, page: 1 });
+        }
+    });
+
+
+    // Handle search results from the server
+    socket.on("search_results", function(results) {
+        document.getElementById('chatMessages').innerHTML = "";
+    
+        for (var i = 0; i < results.length; i++) {
+            var message = results[i];
+            appendMessage(message.text, message.username, message.created_at);
+        }
+    });
+    
+    
+    function appendMessage(message, username, created_at) {
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
         li.classList.add("userChat");
         let textNode = null;
-      
         if (username == 'System') {
-          message = message.replace(/,/g, "<br>");
-          li.style.color = "darkgreen"; // Set text color to dark green
-          li.innerHTML = message;
-        } else {
-          textNode = document.createTextNode(username + ": " + message);
-          li.appendChild(textNode);
+            message = message.replace(/,/g, "<br>");
+            li.style.color = "darkgreen"; // Set text color to dark green
+            li.innerHTML = message;
+          } else {
+          let timestamp = created_at ? " (" + new Date(created_at).toLocaleString() + ")" : "";
+          textNode = document.createTextNode(username + ": " + message + timestamp);
         }
-      
+        li.appendChild(textNode);
         ul.appendChild(li);
-        ul.lastElementChild.scrollIntoView({ behavior: "smooth" }); // Scroll to the bottom
+        ul.lastElementChild.scrollIntoView({ behavior: "smooth" });
       }
       
-
-
-
-
-
-
-  });
-
-  
-
-
+    
+});
