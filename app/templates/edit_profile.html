@@ -32,9 +32,9 @@
         </div>
     
     
-        <label style=" max-height: 100px; display: inline-block; color: rgb(255, 0, 0);">{{ form.about_me.label }}</label><br>
-        {{ form.about_me(size=100,  style="width: 500px; height: 100px; color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
-        {% for error in form.about_me.errors %}
+        <label for="about_me" style=" max-height: 100px; display: inline-block; color: rgb(255, 0, 0);">About me</label><br>
+>
+        {{ form.about_me(cols=100, rows=5,  style="width: 500px; height: 100px; color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}         {% for error in form.about_me.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     
