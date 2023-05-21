@@ -13,6 +13,13 @@
 
 {% block content %}
 <h1 class="edit_profile_heading"><b>Edit Profile</b></h1>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="alertmsg text-center">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
 <form action="" method="post" style=" text-align: center;">
     {{ form.hidden_tag() }}
     <p>
