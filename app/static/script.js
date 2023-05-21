@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     socket.on("load_messages", function(messages) {
-        console.log(messages);
+        // console.log(messages);
         for (let message of messages) {
             appendMessage(message.text, message.username, message.created_at);
         }
@@ -64,13 +64,23 @@ document.addEventListener('DOMContentLoaded', function() {
             li.style.color = "darkgreen"; // Set text color to dark green
             li.innerHTML = message;
           } else {
-          let timestamp = created_at ? " (" + new Date(created_at).toLocaleString() + ")" : "";
-          textNode = document.createTextNode(username + ": " + message + timestamp);
+            let timestamp = created_at ? '[' + formatDate(new Date(created_at)) + '] ' : "";
+        let usernameLink = document.createElement("a");
+        usernameLink.href = "/profile/" + username; // Replace "/profile/" with the actual URL of the user profile
+        usernameLink.textContent = username;
+        let messageText = document.createTextNode(": " + message);
+        li.appendChild(document.createTextNode(timestamp));
+        li.appendChild(usernameLink);
+        li.appendChild(messageText);
         }
-        li.appendChild(textNode);
         ul.appendChild(li);
         ul.lastElementChild.scrollIntoView({ behavior: "smooth" });
       }
       
+
+      function formatDate(date) {
+        const options = { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" };
+        return date.toLocaleString("en-Au", options).replace(',', '');
+      }
     
 });

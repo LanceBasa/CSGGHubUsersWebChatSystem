@@ -17,6 +17,20 @@ def chat_to_dict(chat):
         "created_at": chat.created_at.strftime("%Y-%m-%d %H:%M:%S UTC"),  # Format the datetime as desired
     }
 
+@socketio.on('join', namespace='/chat')
+def handle_user_join(data):
+    # Retrieve the current room from the session
+    # Join the room
+    room = session.get("chat")
+
+    # Join the room
+    join_room(room)
+    print('Client connected!', file=sys.stderr)
+
+    username = current_user.username  # Assuming you have the username of the current user
+    join_message = f"User '{username}' has joined the chat"
+    emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
+
 
 
 
@@ -24,15 +38,11 @@ def chat_to_dict(chat):
 def handle_new_message(message):
     if current_user.is_authenticated:
         room = session.get("chat")
-        chat_message = Chat(text=message, user_id=current_user.id)
+        chat_message = Chat(text=message, user_id=current_user.id, datetime = datetime.utcnow())
         db.session.add(chat_message)
         db.session.commit()
         print(f"New message: {message}", file=sys.stderr)
-        emit("chat", {
-            "message": message,
-            "username": current_user.username,
-            "created_at": chat_message.created_at.replace(tzinfo=timezone.utc).astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S')
-        }, broadcast=True, room=room)
+        emit("chat", chat_message, broadcast=True, room=room)
     else:
         print("Error: Unauthenticated user tried to send a message", file=sys.stderr)
 
