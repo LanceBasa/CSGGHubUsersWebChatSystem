@@ -95,7 +95,6 @@ def edit_profile():
     
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        print(f"Checking for username {form.username.data}. Found: {user}")
         if user is not None and user.id != current_user.id: 
             flash('Username already in use, please choose a different one.')
             return redirect(url_for('edit_profile')) # redirect back to 'edit_profile'

@@ -52,9 +52,7 @@ def handle_connect(data):
     print('Client connected!', file=sys.stderr)
 
     messages = Chat.query.order_by(desc(Chat.created_at)).limit(20).all()
-    #print(messages)
     messages = [chat_to_dict(msg) for msg in reversed(messages)]  # Use chat_to_dict function
-    #print(messages)
     emit('load_messages', messages)
 
     emit('status', {'msg': 'New client connected!'}, room=room)
@@ -76,7 +74,6 @@ def handle_new_message(message):
 
         #check if the message is a command if so
         if message[0]=='~':
-            print('it is ~')
             comm=message[1:]
             comm=comm.split(" ",1)
             item=""
@@ -207,7 +204,6 @@ def handle_search_message(data):
     join_room(room)
 
     search_query = data.get('searchQuery', '').strip()  # Get the search query from the request data
-    print(f"Search query: {search_query}", file=sys.stderr)
 
     if search_query:
         page = data.get('page', 1)  # Retrieve the page number from the request, default to 1 if not provided
@@ -222,7 +218,6 @@ def handle_search_message(data):
             .offset(offset)
             .all()
         )
-        print(f"Search results: {messages}", file=sys.stderr)
 
         search_results = [chat_to_dict(message) for message in messages]
         emit("search_results", search_results)

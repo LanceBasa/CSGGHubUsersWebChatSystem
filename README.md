@@ -42,11 +42,27 @@ Press CTRL+C to quit
 5. Hold CTRL key and click the http link to launch the website. Alternatively, you can copy the link and paste it into url bar.
 6. User should now have access to the website (locally)
 
+
+#### Running selTest.py and 
+
+* Google chrome and firefox must be set up in venv to run tests
+* requirements.txt should be installed before running tests (see How to run step 3)
+* Server should be running before running selfTest.py (see How to run step 4)
+* To run selTest.py, type the follwing in terminal, outside of app directory
+ > python3 selTest.py
+
+* To run unitTest.pytype the follwing in terminal, outside of app directory
+ > python3 unitTest.py
+
+
   
 
 ### References links
-https://tenor.com/view/line-neon-colorful-straigt-line-gif-17184892 - neon line  
 https://cooltext.com/Edit-Logo?LogoID=732429307&732429307_Font=11840 - navs  
-https://www.pxfuel.com/en/desktop-wallpaper-hkeus - background for myprofile  
+https://www.pxfuel.com/en/desktop-wallpaper-hkeus - bg for myprofile
+https://wallpapers.com/wallpapers/cs-go-gun-display-window-eydtv0lpt70a7b9j.html - bg for chat  
 https://www.pxfuel.com/en/desktop-wallpaper-ippfo - bg for login/register  
-https://www.pxfuel.com/en/desktop-wallpaper-ffpfc- bg for landing page  
+https://www.pxfuel.com/en/desktop-wallpaper-hmsog - bg for landing page  
+https://www.pxfuel.com/en/desktop-wallpaper-wcvnv - bg for edit profile
+https://counterstrike.fandom.com/wiki/Counter-Strike:_Global_Offensive - data
+https://chat.openai.com/
