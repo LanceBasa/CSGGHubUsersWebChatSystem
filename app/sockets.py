@@ -84,19 +84,18 @@ def handle_new_message(message):
 
 #------------- for running special commands---------------------------------
 
-
-
 def get_user_fav_weapons(username):
     user = User.query.filter_by(username=username).first()
     if user:
         if user.private==True:
             return username + " has set their profile to private"
-        user = (
-            Weapon.query(Weapon.weapon_name)
+        
+        user = (Weapon.query
             .join(FavWeapon)
             .filter(FavWeapon.user_id == user.id)
-            .all()
-        )
+            .with_entities(Weapon.weapon_name)
+            .all())
+        
         user = sorted(set(fav_weapon.weapon_name for fav_weapon in user))
         user = username+"'s favourite weapons:,"+", ".join(user)
         return user
@@ -160,16 +159,16 @@ def get_user_fav_maps(username):
     if user:
         if user.private == True:
             return username + " has set their profile to private"
-        fav_maps = (
+        user = (
             Map.query
             .join(FavMap)
             .filter_by(user_id=user.id)
             .with_entities(Map.map_name)
             .all()
         )
-        fav_maps = sorted(set(map.map_name for map in fav_maps))
-        user_fav_maps = username + "'s favourite maps:," + ",".join(fav_maps)
-        return user_fav_maps
+        user = sorted(set(map.map_name for map in user))
+        user = username + "'s favourite maps:," + ",".join(user)
+        return user
     return 'Username not found'
 
 
@@ -180,3 +179,10 @@ def get_all_commands():
     command_names = "Here are the commands available:,\n" + ", ".join(command_names)
     return  command_names
 
+def get_map_by_name(name):
+    map = Map.query.filter_by(map_name=name).first()
+    if map:
+        map = map.map_about
+        map = map.replace(",", "")
+        return map
+    return "No such map found. Please use command, ~mapList, to list all available maps"
