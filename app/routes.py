@@ -103,9 +103,16 @@ def before_request():
 def edit_profile():
     form = EditProfileForm()
     form.fav_maps.choices = [(map.id, map.map_name) for map in Map.query.order_by(Map.map_name)]
-    # Add weapon choices
     form.fav_weapons.choices = [(weapon.id, weapon.weapon_name) for weapon in Weapon.query.order_by(Weapon.weapon_name)]
+    
     if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        print(f"Checking for username {form.username.data}. Found: {user}")
+        if user is not None and user.id != current_user.id: 
+            flash('Username already in use, please choose a different one.')
+            return redirect(url_for('edit_profile')) # redirect back to 'edit_profile'
+
+        
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
 
