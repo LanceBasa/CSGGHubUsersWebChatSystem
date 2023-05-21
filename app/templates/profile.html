@@ -1,83 +1,71 @@
 {% extends "base.html" %}
 
 {% block styling %}
-    <style>
-        body{
-            background: url('/static/ProfileBg.jpg'), radial-gradient(rgb(50, 22, 175) 0%, rgb(0, 0, 0) 100%);
-            background-repeat: no-repeat;
-            background-size:cover;
-            }
-    </style>
+<style>
+    body{
+        background: url('/static/ProfileBg.jpg'), radial-gradient(rgb(50, 22, 175) 0%, rgb(0, 0, 0) 100%);
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-
-    <div class="profileBox col-11">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p class="alertmsg offset-3">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-        <div class="row">
-            <div class="col-2">
-                <img class= "profileImage" src="{{ user.avatar(128) }}" alt="profileImage">
-                
-                {% if current_user == user %}
-                <p style="text-align: center;"><a href="{{ url_for('edit_profile') }}"><button>Edit profile</button></a></p>
-
-                {% endif %}
-            </div>
-            <div class="profileInfo offset-1 col-9">
-                <h1>User:  {{user.username }}</h1>
-                <h2>About me</h2>
-                {% if user.about_me %}
-                    <p>{{ user.about_me }}</p>
-                {% endif %}
-                {% if user.last_seen %}
-                    <p>Last seen on: {{ user.last_seen }}</p>
-                {% endif %}
-            </div>
+<div class="profileBox col-11">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alertmsg offset-3">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-2">
+            <img class= "profileImage" src="{{ user.avatar(128) }}" alt="profileImage">
+            
+            {% if current_user == user %}
+    <p style="text-align: center;"><a href="{{ url_for('edit_profile') }}" class="edit-button">Edit profile</a></p>
+{% endif %}
+        </div>
+        <div class="profileInfo offset-1 col-9">
+            <h1>User:  {{user.username }}</h1>
+            <h2>About me</h2>
+            {% if user.about_me %}
+                <p>{{ user.about_me }}</p>
+            {% endif %}
+            {% if user.last_seen %}
+                <p>Last seen on: {{ user.last_seen }}</p>
+            {% endif %}
         </div>
     </div>
-  
-    <!-- <img class="horizontal-line" src="{{ url_for('static', filename='neon-genesis.gif') }}" alt="test"> -->
+</div>
 
-    <div class="horizontal-line"></div>
+<div class="horizontal-line"></div>
 
-
-    <div class="playerFavs col-10">
-
-        <div class="gunsAndMaps offset-3 col-3">
-            <h2>Favorite Maps:</h2>
-            <div class="test">
-
+<div class="playerFavs col-10">
+    <div class="gunsAndMaps offset-3 col-3">
+        <h2>Favorite Maps:</h2>
+        <div class="test">
             {% if user.fav_maps %}
-                <ul >
+                <ul>
                     {% for fav_map in user.fav_maps %}
                         <li>{{ fav_map.map.map_name }}</li>
                     {% endfor %}
                 </ul>
-            
             {% endif %}
-            </div>
-
         </div>
-        <div class="gunsAndMaps offset-1 col-3">
-            <h2>Favorite Weapons:</h2>
-            <div class="test">
-                {% if user.fav_weapons %}
-                <ul >
+    </div>
+    <div class="gunsAndMaps offset-1 col-3">
+        <h2>Favorite Weapons:</h2>
+        <div class="test">
+            {% if user.fav_weapons %}
+                <ul>
                     {% for fav_weapon in user.fav_weapons %}
                         <li>{{ fav_weapon.weapon.weapon_name }}</li>
                     {% endfor %}
                 </ul>
-                {% endif %}
-            </div>
-
-
+            {% endif %}
         </div>
-
     </div>
+</div>
 {% endblock %}
