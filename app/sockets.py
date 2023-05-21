@@ -6,7 +6,6 @@ import sys
 from sqlalchemy import desc
 from flask_login import current_user
 
-
 def chat_to_dict(chat):
     return {
         "id": chat.id,
@@ -16,20 +15,11 @@ def chat_to_dict(chat):
         # Add other fields as needed...
     }
 
-
-
 @socketio.on("new_message", namespace='/chat')
 def handle_new_message(message):
-    # Assuming that you're using flask_login, you can access the currently authenticated user with current_user
     if current_user.is_authenticated:
         room = session.get("chat")
-        # Create a new Chat object and store it in the database
         chat_message = Chat(text=message, user_id=current_user.id)
-        #if len(chat_message==1):
-            #if chat_message[1] == '~':
-                #print(the commands)
-            #if second field == player name:
-                #query.special.table.messages which have sql query using the name of player
         db.session.add(chat_message)
         db.session.commit()
         print(f"New message: {message}", file=sys.stderr)
@@ -37,62 +27,34 @@ def handle_new_message(message):
     else:
         print("Error: Unauthenticated user tried to send a message", file=sys.stderr)
 
-
-
 @socketio.on('connect', namespace='/chat')
 def handle_connect(data):
-    # Retrieve the current room from the session
     room = session.get("chat")
-    # Join the room
     join_room(room)
     print('Client connected!', file=sys.stderr)
 
-    # Retrieve the last 20 chat messages from the database
     messages = Chat.query.order_by(desc(Chat.created_at)).limit(20).all()
-
-    # Convert the messages to a format that can be sent over the socket
-    messages = [{'text': msg.text, 'username': msg.author.username} for msg in reversed(messages)]
-
-    # Send the messages to the client
+    messages = [chat_to_dict(msg) for msg in messages]  # Use chat_to_dict function
     emit('load_messages', messages)
 
-    # This assumes that you want to send a status message every time a client connects
     emit('status', {'msg': 'New client connected!'}, room=room)
-
 
 @socketio.on('join', namespace='/chat')
 def handle_user_join(data):
-    # Retrieve the current room from the session
-    # Join the room
     room = session.get("chat")
-
-    # Join the room
     join_room(room)
     print('Client connected!', file=sys.stderr)
 
-    username = current_user.username  # Assuming you have the username of the current user
+    username = current_user.username  
     join_message = f"User '{username}' has joined the chat"
     emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
 
 @socketio.on("search_message", namespace='/chat')
 def handle_search_message(query):
-    # The room identifier can be any unique string - for example, you can use the session ID
     room = request.sid
-
-    # Create a new chat room for this search
     join_room(room)
-
-    # Get current page number from the search query data (use 1 as default)
     page = query.get('page', 1)
-
-    # Search the database for chat messages containing the query
     results = Chat.query.filter(Chat.text.contains(query)).paginate(page=page, per_page=10)
-
-    # Convert results to a list of dictionaries, so they can be sent as JSON
     results_list = [chat_to_dict(result) for result in results.items]
-
-    # Emit the search results to the client
     emit("search_results", results_list, room=room)
-
-    # Leave the chat room
     leave_room(room)
