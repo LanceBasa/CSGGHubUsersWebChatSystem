@@ -10,7 +10,7 @@ def chat_to_dict(chat):
     return {
         "id": chat.id,
         "text": chat.text,
-        "username": chat.user.username,  # Assuming the user is linked with a relationship
+        "username": chat.author.username,  # Use author instead of user
         "created_at": chat.created_at.isoformat(),  # Convert datetime to string
         # Add other fields as needed...
     }
@@ -34,7 +34,9 @@ def handle_connect(data):
     print('Client connected!', file=sys.stderr)
 
     messages = Chat.query.order_by(desc(Chat.created_at)).limit(20).all()
+    #print(messages)
     messages = [chat_to_dict(msg) for msg in messages]  # Use chat_to_dict function
+    #print(messages)
     emit('load_messages', messages)
 
     emit('status', {'msg': 'New client connected!'}, room=room)
@@ -50,11 +52,30 @@ def handle_user_join(data):
     emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
 
 @socketio.on("search_message", namespace='/chat')
-def handle_search_message(query):
+def handle_search_message(data):
     room = request.sid
     join_room(room)
-    page = query.get('page', 1)
-    results = Chat.query.filter(Chat.text.contains(query)).paginate(page=page, per_page=10)
-    results_list = [chat_to_dict(result) for result in results.items]
-    emit("search_results", results_list, room=room)
-    leave_room(room)
+
+    search_query = data.get('searchQuery', '').strip()  # Get the search query from the request data
+    print(f"Search query: {search_query}", file=sys.stderr)
+
+    if search_query:
+        page = data.get('page', 1)  # Retrieve the page number from the request, default to 1 if not provided
+        limit = 10  # Number of items per page
+        offset = (page - 1) * limit  # Calculate the offset
+
+        # Perform the database query to retrieve matching messages with pagination
+        messages = (
+            db.session.query(Chat)
+            .filter(Chat.text.like(f'%{search_query}%'))
+            .limit(limit)
+            .offset(offset)
+            .all()
+        )
+        print(f"Search results: {messages}", file=sys.stderr)
+
+        search_results = [chat_to_dict(message) for message in messages]
+        emit("search_results", search_results)
+    else:
+        # If the search query is empty, send an empty list as search results
+        emit("search_results", [])

@@ -23,16 +23,21 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     
     socket.on("load_messages", function(messages) {
+        console.log(messages);
         for(let message of messages) {
             appendMessage(message.text, message.username);
         }
     })
 
     // Listen for keyup event on the search input field
-    document.getElementById('search').addEventListener('keyup', function() {
-        var searchQuery = this.value;
-        socket.emit("search_message", {query: searchQuery, page: 1});
-    })
+    // Listen for keyup event on the search input field
+    document.getElementById('search').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            var searchQuery = this.value;
+            socket.emit('search_message', { searchQuery: searchQuery, page: 1 });
+        }
+    });
+
 
     // Handle search results from the server
     socket.on("search_results", function(results) {
