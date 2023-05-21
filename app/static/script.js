@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key=="Enter" && message != ''){
             socket.emit("new_message",message);
             document.getElementById("message").value="";
-
         }
     })
 
@@ -22,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         appendMessage(data["message"], data["username"]);
     })
     
+
+
     socket.on("load_messages", function(messages) {
         for(let message of messages) {
             appendMessage(message.text, message.username);
@@ -33,21 +34,26 @@ document.addEventListener('DOMContentLoaded', function() {
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
         li.classList.add("userChat");
-        let textNode=null;
-        if (username=='System'){
-            textNode = document.createTextNode(message);
-            li.style.color = "darkgreen"; // Set text color to red
-
-        }else {
-            textNode = document.createTextNode(username + ": " + message);
+        let textNode = null;
+      
+        if (username == 'System') {
+          message = message.replace(/,/g, "<br>");
+          li.style.color = "darkgreen"; // Set text color to dark green
+          li.innerHTML = message;
+        } else {
+          textNode = document.createTextNode(username + ": " + message);
+          li.appendChild(textNode);
         }
-
-        li.appendChild(textNode);
+      
         ul.appendChild(li);
-        //ul.scrollTop = ul.scrollHeight;
         ul.lastElementChild.scrollIntoView({ behavior: "smooth" }); // Scroll to the bottom
+      }
+      
 
-    }
+
+
+
+
 
   });
 

@@ -6,7 +6,6 @@ from app.models import User
 from datetime import datetime
 from app.models import User,Map, FavMap, Weapon, FavWeapon, Commands
 from flask_socketio import SocketIO, emit
-from sqlalchemy.orm import joinedload
 
 
 
@@ -147,58 +146,4 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 
-#------- for special commands-----------------
-def get_user_fav_weapons(username):
-    user = User.query.filter_by(username=username).first()
-    if user:
-        fav_weapons = (
-            FavWeapon.query
-            .join(Weapon)
-            .options(joinedload(FavWeapon.weapon))
-            .filter_by(user_id=user.id)
-            .all()
-        )
-        return [fav_weapon.weapon.weapon_name for fav_weapon in fav_weapons]
-    return 'Username not found'
-
-def get_all_weapon_names():
-    weapon_names = Weapon.query.with_entities(Weapon.name).all()
-    return [name for (name,) in weapon_names]
-
-def get_weapons_by_category(category):
-    weapons = Weapon.query.filter_by(category=category).all()
-    return weapons
-
-
-def get_all_maps():
-    maps = Map.query.all()
-    return maps
-
-def get_weapon_by_name(name):
-    weapon = Weapon.query.filter_by(weapon_name=name).first()
-    if weapon:
-        text = weapon.description
-        return text
-    return "No such weapon found"
-
-def get_player_rank(name):
-    users = User.query.filter_by(username=name).first()
-    return users
-
-def get_user_fav_maps(username):
-    user = User.query.filter_by(username=username).first()
-    if user:
-        fav_maps = (
-            FavMap.query
-            .join(Map)
-            .options(joinedload(FavMap.map))
-            .filter_by(user_id=user.id)
-            .all()
-        )
-        return [fav_map.map.map_name for fav_map in fav_maps]
-    return 'Username not found'
-
-
-def get_all_commands():
-    commands = Commands.query.with_entities(Commands.name).all()
 
