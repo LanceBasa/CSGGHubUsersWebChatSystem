@@ -22,7 +22,7 @@
         {% endwith %}
 <form  method="post" style=" text-align: center;">
     {{ form.hidden_tag() }}
-    <p>
+    
         <div>
         {{ form.username.label(class="text-center", style="display: block; color: rgb(0, 229, 255);") }}<br>
         {{ form.username(size=32, style=";color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
@@ -30,21 +30,21 @@
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
         </div>
-    </p>
-    <p>
+    
+    
         <label style=" max-height: 100px; display: inline-block; color: rgb(255, 0, 0);">{{ form.about_me.label }}</label><br>
         {{ form.about_me(size=100,  style="width: 500px; height: 100px; color: black; background-color: rgba(245, 245, 245,0.8); border: 1px solid black; border-radius: 20px;") }}<br>
         {% for error in form.about_me.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
-    </p>
-        <p>
+    
+    
             <div class="private">
                 <input type="checkbox" id="UserPrivate" name="isPrivate" value="true"
                         {% if current_user.private %}checked{% endif %}>
                 <label for="UserPrivate">Private</label>
             </div>
-        </p>
+       
 <div class="playerFavs col-10">
     <div class="gunsAndMaps  col-3">
         <h2 >Favorite Maps:</h2>
