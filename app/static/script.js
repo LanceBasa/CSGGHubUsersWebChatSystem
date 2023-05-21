@@ -59,19 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
         li.classList.add("userChat");
         let textNode = null;
         if (username === 'System') {
-            textNode = document.createTextNode(message);
-            li.style.color = "darkgreen";
+          textNode = document.createTextNode(message);
+          li.style.color = "darkgreen";
         } else {
-            let dateOptions = { day: '2-digit', month: '2-digit', year: '2-digit' };
-            let timeOptions = { hour: '2-digit', minute: '2-digit' };
-            let localTimestamp = created_at ? new Date(created_at).toLocaleString('en-GB', { ...dateOptions, ...timeOptions }) : "";  
-            textNode = document.createTextNode(username + ": " + message + " (" + localTimestamp + ")");
+          let timestamp = created_at ? " (" + new Date(created_at).toLocaleString() + ")" : "";
+          textNode = document.createTextNode(username + ": " + message + timestamp);
         }
         li.appendChild(textNode);
         ul.appendChild(li);
         ul.lastElementChild.scrollIntoView({ behavior: "smooth" });
-    }
-    
-    
+      }
+      
     
 });

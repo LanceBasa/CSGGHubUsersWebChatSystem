@@ -6,6 +6,8 @@ import sys
 from sqlalchemy import desc
 from flask_login import current_user
 
+from datetime import datetime, timezone
+
 def chat_to_dict(chat):
     return {
         "id": chat.id,
@@ -13,6 +15,8 @@ def chat_to_dict(chat):
         "username": chat.author.username,
         "created_at": chat.created_at.strftime("%Y-%m-%d %H:%M:%S UTC"),  # Format the datetime as desired
     }
+
+
 
 
 @socketio.on("new_message", namespace='/chat')
@@ -23,15 +27,13 @@ def handle_new_message(message):
         db.session.add(chat_message)
         db.session.commit()
         print(f"New message: {message}", file=sys.stderr)
-        message_data = {
+        emit("chat", {
             "message": message,
             "username": current_user.username,
-            "created_at": chat_message.created_at.isoformat(),
-        }
-        emit("chat", message_data, broadcast=True, room=room)
+            "created_at": chat_message.created_at.replace(tzinfo=timezone.utc).astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S')
+        }, broadcast=True, room=room)
     else:
         print("Error: Unauthenticated user tried to send a message", file=sys.stderr)
-
 
 @socketio.on('connect', namespace='/chat')
 def handle_connect(data):
