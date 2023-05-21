@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Document is ready!');
 
     const socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
-    console.log('check if connected', socket.connected)
 
     socket.on('connect', function(){
-        console.log("connected", socket.connected)
         socket.emit('join', {data:"username"});
     })
 
