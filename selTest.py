@@ -57,6 +57,14 @@ def login_logout_check(driver):
     logout_button= driver.find_element(By.XPATH, '//a[@href="/logout"]')
     logout_button.click()
 
+    try:
+        success_message = WebDriverWait(driver, 2).until(
+            EC.presence_of_element_located((By.XPATH, "//div[@class='col-12 welcomeBlurb']"))
+        )
+        print("Logout registered user -- Pass")
+    except:
+        print("Logout registered user -- Fail")
+
     # Wait for a few seconds before closing the browser
     time.sleep(1)
 
@@ -150,13 +158,21 @@ def chat_check(driver):
         print("Sending message -- Fail")
 
     
-    # profileLink=driver.find_element(By.XPATH, '//a[@href="/profile/bobby"]')
-    # profileLink=
+    profileLink=driver.find_element(By.XPATH, '//a[@href="/profile/bobby"]')
+    profileLink.click()
+
+    try:
+        success_message = WebDriverWait(driver, 2).until(
+            EC.presence_of_element_located((By.XPATH, "//div[@class='profileInfo offset-1 col-9']"))
+        )
+        print("Clickable username in chat -- Pass")
+    except:
+        print("Clickable username in chat -- Fail")
 
 
 
 
-    time.sleep(1)
+    time.sleep(4)
 
 
 
