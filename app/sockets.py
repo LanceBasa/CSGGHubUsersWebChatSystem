@@ -7,6 +7,15 @@ from sqlalchemy import desc
 from flask_login import current_user
 
 
+def chat_to_dict(chat):
+    return {
+        "id": chat.id,
+        "text": chat.text,
+        "username": chat.user.username,  # Assuming the user is linked with a relationship
+        "created_at": chat.created_at.isoformat(),  # Convert datetime to string
+        # Add other fields as needed...
+    }
+
 
 
 @socketio.on("new_message", namespace='/chat')
@@ -65,4 +74,25 @@ def handle_user_join(data):
     join_message = f"User '{username}' has joined the chat"
     emit('chat', {'message': join_message, 'username' :'System'}, room=room, broadcast=True)
 
-  
+@socketio.on("search_message", namespace='/chat')
+def handle_search_message(query):
+    # The room identifier can be any unique string - for example, you can use the session ID
+    room = request.sid
+
+    # Create a new chat room for this search
+    join_room(room)
+
+    # Get current page number from the search query data (use 1 as default)
+    page = query.get('page', 1)
+
+    # Search the database for chat messages containing the query
+    results = Chat.query.filter(Chat.text.contains(query)).paginate(page=page, per_page=10)
+
+    # Convert results to a list of dictionaries, so they can be sent as JSON
+    results_list = [chat_to_dict(result) for result in results.items]
+
+    # Emit the search results to the client
+    emit("search_results", results_list, room=room)
+
+    # Leave the chat room
+    leave_room(room)

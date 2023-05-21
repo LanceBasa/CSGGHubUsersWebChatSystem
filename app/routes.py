@@ -4,9 +4,11 @@ from app.forms import LoginForm, EditProfileForm
 from flask_login import logout_user, current_user, login_user, login_required
 from app.models import User
 from datetime import datetime
-from app.models import User,Map, FavMap, Weapon, FavWeapon, Commands
+from app.models import User,Map, FavMap, Weapon, FavWeapon, Commands, Chat
 from flask_socketio import SocketIO, emit
 from sqlalchemy.orm import joinedload
+from sqlalchemy import or_
+
 
 
 
@@ -201,4 +203,6 @@ def get_user_fav_maps(username):
 
 def get_all_commands():
     commands = Commands.query.with_entities(Commands.name).all()
+
+
 

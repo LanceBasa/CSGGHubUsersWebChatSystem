@@ -27,8 +27,30 @@ document.addEventListener('DOMContentLoaded', function() {
             appendMessage(message.text, message.username);
         }
     })
-    
 
+    // Listen for keyup event on the search input field
+    // Listen for keyup event on the search input field
+    document.getElementById('search').addEventListener('keyup', function() {
+        var searchQuery = this.value;
+        socket.emit("search_message", {query: searchQuery, page: 1});
+    })
+
+
+    // Handle search results from the server
+    socket.on("search_results", function(results) {
+        // Clear existing chat messages
+        document.getElementById('messages').innerHTML = "";
+    
+        // Add each result to the chat window
+        for (var i = 0; i < results.length; i++) {
+            var message = results[i];
+            var node = document.createElement('li');
+            node.textContent = message.username + ": " + message.text;
+            document.getElementById('messages').appendChild(node);
+        }
+    });
+    
+    
     function appendMessage(message, username) {
         let ul = document.getElementById("chatMessages");
         let li = document.createElement("li");
@@ -37,20 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (username=='System'){
             textNode = document.createTextNode(message);
             li.style.color = "darkgreen"; // Set text color to red
-
         }else {
             textNode = document.createTextNode(username + ": " + message);
         }
-
         li.appendChild(textNode);
         ul.appendChild(li);
-        //ul.scrollTop = ul.scrollHeight;
         ul.lastElementChild.scrollIntoView({ behavior: "smooth" }); // Scroll to the bottom
-
     }
-
-  });
-
-  
-
-
+});
