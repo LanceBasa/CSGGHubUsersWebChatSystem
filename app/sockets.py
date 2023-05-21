@@ -35,7 +35,7 @@ def handle_connect(data):
 
     messages = Chat.query.order_by(desc(Chat.created_at)).limit(20).all()
     #print(messages)
-    messages = [chat_to_dict(msg) for msg in messages]  # Use chat_to_dict function
+    messages = [chat_to_dict(msg) for msg in reversed(messages)]  # Use chat_to_dict function
     #print(messages)
     emit('load_messages', messages)
 
