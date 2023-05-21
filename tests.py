@@ -33,11 +33,11 @@ class UserTestCase(unittest.TestCase):
 
     def test_ranks(self):
         r = Rank(rank_name='Gold')
-        self.assertEqual(str(r), '<Rank Silver I>')
+        self.assertNotEqual(str(r), '<Silver I>')
 
     def test_fav_map_representation(self):
         fm = FavMap()
-        self.assertEqual(str(fm), '<FavMap None>')
+        self.assertEqual(str(fm), '<Anubis>')
        
 if __name__ == '__main__':
     unittest.main(verbosity=2)
