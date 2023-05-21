@@ -45,7 +45,10 @@ Press CTRL+C to quit
 
 #### Running selTest.py and 
 
-* Google chrome and firefox must be set up in venv to run tests
+* Google chrome(Google Chrome 113.0.5672.126) and firefox (Mozilla Firefox 113.0.1) must be set up in venv to run tests
+* Click [here](https://www.wikihow.com/Install-Google-Chrome-Using-Terminal-on-Linux#:~:text=Install%20the%20downloaded%20Chrome%20package,deb%20and%20press%20Enter) and follow instructions on how to install google chrome in venv
+* Install firefox by typing the following
+	> sudo apt install firefox
 * requirements.txt should be installed before running tests (see How to run step 3)
 * Server should be running before running selfTest.py (see How to run step 4)
 * To run selTest.py, type the follwing in terminal, outside of app directory
